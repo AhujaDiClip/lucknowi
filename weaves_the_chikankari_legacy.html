@@ -1,0 +1,2840 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>लखनवी Weaves | The Chikankari Legacy — Handcrafted in Lucknow</title>
+    <meta name="description" content="Mom-Owned • Homegrown • Handcrafted. Authentic Lucknowi Chikankari kurtas, georgette sarees, Chanderi kurtis & festive statements — woven in Lucknow for your wardrobe.">
+    <meta name="theme-color" content="#2B1B17">
+
+    <!-- Fonts: Playfair Display (Luxury Heritage), Noto Serif Devanagari (लखनवी), Great Vibes (weaves script), Poppins (Clean UI) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Noto+Serif+Devanagari:wght@600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- ================= LIVE CMS CONFIGURATION ================= -->
+    <!-- Works out-of-the-box with browser storage for instant editing.
+         Connect your GitHub repo + token inside Admin Mode -> GitHub Sync to publish edits live for all visitors. -->
+    <script>
+        const DEFAULT_GITHUB_CONFIG = {
+            owner: "YOUR_GITHUB_USERNAME",
+            repo: "lucknowi-weaves",
+            branch: "main"
+        };
+        // Default demo admin password is: lucknowi (stored as SHA-256 hash)
+        const ADMIN_PASSWORD_HASH = "e69b7528f53f4389238e2968883569956c2a246867f7126d06905482b62165e9";
+        // Optional Google Apps Script Web App URL for logging wishlist/callback leads
+        const GOOGLE_SHEET_WEBAPP_URL = "";
+    </script>
+
+    <style>
+        :root {
+            --bg-main: #FDF9F3;          /* Soft Malmal Ivory */
+            --bg-warm: #F6EDE2;          /* Raw Silk Cream */
+            --primary: #A64B2A;          /* Nawabi Terracotta / Rust Copper (from logo) */
+            --primary-dark: #84371C;
+            --primary-soft: #F7E5DB;     /* Soft Blush Clay */
+            --gold: #C9973E;             /* Antique Zari Gold */
+            --gold-soft: #FBF2DE;
+            --heritage: #2B1B17;         /* Deep Kohl Espresso */
+            --text-dark: #2F2420;
+            --text-muted: #7A6962;
+            --card-bg: #FFFFFF;
+            --whatsapp: #25D366;
+            --border-subtle: rgba(166, 75, 42, 0.14);
+            --shadow-soft: 0 12px 32px rgba(43, 27, 23, 0.06);
+            --shadow-hover: 0 22px 46px rgba(166, 75, 42, 0.14);
+            --radius-lg: 24px;
+            --radius-pill: 999px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-main);
+            color: var(--text-dark);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, .serif {
+            font-family: 'Playfair Display', Georgia, serif;
+            color: var(--heritage);
+        }
+
+        .hindi-brand {
+            font-family: 'Noto Serif Devanagari', serif;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .script-brand {
+            font-family: 'Great Vibes', cursive;
+            color: var(--gold);
+            font-weight: 400;
+        }
+
+        button, a { transition: transform 0.16s ease, background-color 0.25s ease, color 0.25s ease, box-shadow 0.25s ease; }
+        button:active, .btn-hero:active { transform: scale(0.97); }
+
+        .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.65s ease, transform 0.65s cubic-bezier(0.16, 1, 0.3, 1); }
+        .reveal.in-view { opacity: 1; transform: translateY(0); }
+
+        /* ================= VIBE MARQUEE ================= */
+        .vibe-marquee {
+            background: var(--heritage);
+            color: var(--gold);
+            padding: 9px 0;
+            overflow: hidden;
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            font-size: 0.76rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        .marquee-track {
+            display: inline-block;
+            animation: scrollMarquee 32s linear infinite;
+        }
+        .vibe-marquee:hover .marquee-track { animation-play-state: paused; }
+        .marquee-track span { margin: 0 26px; position: relative; }
+        .marquee-track span::after { content: '✦'; position: absolute; right: -28px; opacity: 0.55; font-size: 0.65rem; }
+        .marquee-track span.highlight { color: var(--primary-soft); }
+        @keyframes scrollMarquee { 0% { transform: translateX(0%); } 100% { transform: translateX(-50%); } }
+
+        /* ================= STICKY HEADER ================= */
+        header {
+            position: sticky; top: 0; z-index: 1000;
+            padding: 12px 5vw;
+            background: rgba(253, 249, 243, 0.92);
+            backdrop-filter: blur(14px);
+            border-bottom: 1px solid var(--border-subtle);
+            display: flex; justify-content: space-between; align-items: center; gap: 16px;
+        }
+        .header-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+        .brand-crest {
+            width: 48px; height: 48px; border-radius: 50%;
+            background: #FFFFFF;
+            border: 1.5px solid var(--gold);
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 4px 14px rgba(166, 75, 42, 0.14);
+            flex-shrink: 0; overflow: hidden;
+            transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .header-brand:hover .brand-crest { transform: rotate(-6deg) scale(1.06); }
+        .logo-lockup { display: flex; align-items: baseline; gap: 6px; line-height: 1.1; }
+        .logo-lockup .hindi-brand { font-size: 1.55rem; }
+        .logo-lockup .script-brand { font-size: 1.65rem; color: var(--primary-dark); }
+        .logo-sub {
+            font-size: 0.68rem; color: var(--text-muted); text-transform: uppercase;
+            letter-spacing: 2.4px; display: block; margin-top: 2px;
+        }
+
+        .header-nav-group { display: flex; align-items: center; gap: 18px; }
+        nav ul { display: flex; gap: 10px; list-style: none; }
+        nav a {
+            color: var(--text-dark); text-decoration: none; font-weight: 500;
+            font-size: 0.84rem; padding: 8px 14px; border-radius: var(--radius-pill);
+            text-transform: uppercase; letter-spacing: 1px;
+        }
+        nav a:hover { background: var(--primary-soft); color: var(--primary); }
+
+        .header-wa-btn {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: var(--whatsapp); color: #fff;
+            padding: 9px 18px; border-radius: var(--radius-pill);
+            text-decoration: none; font-weight: 600; font-size: 0.82rem;
+            letter-spacing: 0.5px; text-transform: uppercase;
+            box-shadow: 0 4px 14px rgba(37, 211, 102, 0.28);
+        }
+        .header-wa-btn:hover { background: #1fb855; transform: translateY(-2px); }
+
+        /* ================= HERO SECTION ================= */
+        .hero {
+            min-height: 78vh; position: relative;
+            background:
+                radial-gradient(circle at 82% 18%, rgba(201, 151, 62, 0.22) 0%, rgba(201, 151, 62, 0) 46%),
+                radial-gradient(circle at 14% 84%, rgba(166, 75, 42, 0.14) 0%, rgba(166, 75, 42, 0) 48%),
+                linear-gradient(165deg, #FDF9F3 0%, #F7EDE0 52%, #F1E1CE 100%);
+            background-size: cover; background-position: center;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            text-align: center; padding: 72px 20px 62px; overflow: hidden;
+        }
+        /* Subtle Mughal arch frame overlay */
+        .hero::before {
+            content: ''; position: absolute; inset: 18px;
+            border: 1px solid rgba(201, 151, 62, 0.34);
+            border-radius: 220px 220px 24px 24px;
+            pointer-events: none; max-width: 1120px; margin: 0 auto; z-index: 1;
+        }
+        /* Pinterest-style Lucknowi architectural & chikankari art layer */
+        .hero-lucknow-art {
+            position: absolute; inset: 0; pointer-events: none; z-index: 0; overflow: hidden;
+        }
+        .hero.has-custom-bg .hero-lucknow-art { opacity: 0.25; }
+        .hero-jali-svg {
+            position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0.45;
+        }
+        .hero-arch-svg {
+            position: absolute; bottom: -10px; left: 50%; transform: translateX(-50%);
+            width: min(1040px, 118vw); height: auto; opacity: 0.9;
+        }
+        .hero-sunbeam {
+            position: absolute; top: -18%; right: -8%; width: 520px; height: 520px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255, 244, 222, 0.78) 0%, rgba(201, 151, 62, 0.12) 45%, transparent 72%);
+            filter: blur(18px);
+        }
+        .hero-inner { position: relative; z-index: 2; max-width: 780px; }
+        .hero-welcome {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: rgba(255, 255, 255, 0.86); backdrop-filter: blur(8px);
+            border: 1px solid rgba(166, 75, 42, 0.22);
+            color: var(--primary); padding: 7px 20px; border-radius: var(--radius-pill);
+            font-size: 0.82rem; font-weight: 600; letter-spacing: 0.6px; margin-bottom: 18px;
+        }
+        .hero h1 {
+            font-size: clamp(2.4rem, 5.5vw, 4.3rem);
+            color: var(--heritage); line-height: 1.12; margin-bottom: 14px; font-weight: 700;
+        }
+        .hero h1 span { color: var(--primary); font-style: italic; }
+        .hero p {
+            font-size: 1.08rem; color: var(--text-dark); opacity: 0.86;
+            max-width: 620px; margin: 0 auto; line-height: 1.75;
+        }
+        .hero-chips {
+            display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin-top: 24px;
+        }
+        .hero-chip {
+            background: rgba(255, 255, 255, 0.84); backdrop-filter: blur(6px);
+            border: 1px solid var(--border-subtle); color: var(--heritage);
+            padding: 8px 16px; border-radius: var(--radius-pill);
+            font-size: 0.82rem; font-weight: 600;
+            display: inline-flex; align-items: center; gap: 8px;
+        }
+        .hero-chip i { color: var(--primary); }
+
+        .hero-buttons {
+            display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-top: 32px;
+        }
+        .btn-hero {
+            padding: 14px 32px; border-radius: var(--radius-pill); font-weight: 600;
+            text-transform: uppercase; letter-spacing: 1px; text-decoration: none;
+            display: inline-flex; align-items: center; gap: 10px; font-size: 0.9rem; cursor: pointer;
+        }
+        .btn-primary {
+            background: var(--primary); color: #fff; border: 2px solid var(--primary);
+            box-shadow: 0 10px 24px rgba(166, 75, 42, 0.28);
+        }
+        .btn-primary:hover { background: var(--primary-dark); border-color: var(--primary-dark); transform: translateY(-2px); }
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.78); color: var(--heritage);
+            border: 2px solid var(--heritage);
+        }
+        .btn-secondary:hover { background: var(--heritage); color: #fff; transform: translateY(-2px); }
+
+        .trust-row {
+            display: flex; align-items: center; gap: 12px; flex-wrap: wrap; justify-content: center;
+            margin-top: 26px; font-size: 0.8rem; color: var(--text-muted); font-weight: 500;
+        }
+        .trust-row i { color: var(--gold); margin-right: 4px; }
+
+        /* ================= ANNOUNCEMENT BANNER ================= */
+        .promo-banner {
+            display: flex; align-items: center; justify-content: center; gap: 12px;
+            background: linear-gradient(90deg, var(--heritage), #4B2A1E, var(--heritage));
+            color: var(--gold); padding: 13px 20px; text-align: center;
+            font-size: 0.88rem; font-weight: 500; text-decoration: none;
+        }
+        .promo-banner strong { color: #FDF9F3; }
+
+        /* ================= ADMIN BAR & MAINTENANCE BANNER ================= */
+        .construction-admin-banner {
+            display: none; position: sticky; top: 0; z-index: 9000;
+            background: #B84218; color: #fff; padding: 10px 20px;
+            align-items: center; justify-content: center; gap: 14px;
+            font-size: 0.84rem; font-weight: 600; flex-wrap: wrap; text-align: center;
+        }
+        .construction-admin-banner button {
+            background: #fff; color: #B84218; border: none; padding: 5px 14px;
+            border-radius: var(--radius-pill); font-weight: 700; cursor: pointer; font-size: 0.78rem;
+        }
+
+        .admin-bar {
+            display: none; background: var(--heritage); color: #fff;
+            padding: 14px 5vw; align-items: center; justify-content: space-between;
+            gap: 14px; flex-wrap: wrap; border-bottom: 2px solid var(--gold);
+        }
+        .admin-bar.active { display: flex; }
+        .admin-bar-title { font-weight: 600; font-size: 0.9rem; display: flex; align-items: center; gap: 8px; }
+        .admin-bar-title i { color: var(--gold); }
+        .admin-bar-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+        .admin-btn-primary {
+            background: var(--gold); color: var(--heritage); border: none;
+            padding: 8px 16px; border-radius: var(--radius-pill);
+            font-weight: 700; cursor: pointer; font-size: 0.8rem;
+            display: inline-flex; align-items: center; gap: 7px;
+        }
+        .admin-btn-ghost {
+            background: rgba(255, 255, 255, 0.1); color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            padding: 8px 14px; border-radius: var(--radius-pill);
+            font-weight: 500; cursor: pointer; font-size: 0.8rem;
+            display: inline-flex; align-items: center; gap: 6px;
+        }
+        .admin-btn-ghost:hover { background: rgba(255, 255, 255, 0.2); }
+
+        /* ================= SECTION HEADINGS ================= */
+        .section-title {
+            text-align: center; font-size: clamp(1.9rem, 3.6vw, 2.7rem);
+            color: var(--heritage); margin: 56px 0 12px; font-weight: 700;
+        }
+        .section-title::after {
+            content: '❖'; display: block; color: var(--gold);
+            font-size: 1rem; margin-top: 8px; letter-spacing: 6px;
+        }
+        .section-subtitle {
+            text-align: center; color: var(--text-muted); font-size: 1rem;
+            margin-bottom: 36px; padding: 0 20px;
+        }
+
+        /* ================= FILTER BAR ================= */
+        .filter-section {
+            background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px);
+            padding: 18px 5vw; position: sticky; top: 73px; z-index: 850;
+            box-shadow: 0 8px 24px rgba(43, 27, 23, 0.04);
+            margin-bottom: 36px; border-bottom: 1px solid var(--border-subtle);
+        }
+        .filter-controls {
+            display: flex; flex-direction: column; gap: 14px; max-width: 1320px; margin: 0 auto;
+        }
+        .search-wrapper { position: relative; width: 100%; display: flex; align-items: center; }
+        .search-icon { position: absolute; left: 18px; color: var(--text-muted); font-size: 0.92rem; pointer-events: none; }
+        .search-input {
+            width: 100%; padding: 12px 44px; border: 1.5px solid #E7DDD3;
+            border-radius: var(--radius-pill); background: var(--bg-main);
+            font-family: inherit; font-size: 0.92rem; outline: none; color: var(--text-dark);
+            transition: border-color 0.25s, box-shadow 0.25s;
+        }
+        .search-input:focus { border-color: var(--primary); background: #fff; box-shadow: 0 0 0 4px rgba(166, 75, 42, 0.09); }
+        .search-clear {
+            position: absolute; right: 14px; background: none; border: none; color: var(--text-muted);
+            cursor: pointer; font-size: 0.95rem; padding: 5px; display: none;
+        }
+        .filter-row { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 14px; }
+        .filter-tabs { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+        .filter-tab-group { display: inline-flex; align-items: center; gap: 4px; }
+        .filter-btn {
+            padding: 8px 18px; background: var(--bg-main); color: var(--text-muted);
+            border: 1px solid #E4D7C9; border-radius: var(--radius-pill); cursor: pointer;
+            font-weight: 600; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.8px;
+        }
+        .filter-btn.active, .filter-btn:hover {
+            background: var(--heritage); color: #fff; border-color: var(--heritage);
+        }
+        .tab-delete-btn {
+            width: 22px; height: 22px; border-radius: 50%; border: none; cursor: pointer;
+            background: rgba(192, 57, 43, 0.12); color: #C0392B; font-size: 0.65rem;
+            display: inline-flex; align-items: center; justify-content: center;
+        }
+        .tab-delete-btn:hover { background: #C0392B; color: #fff; }
+        .filter-right { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+        .sort-select {
+            padding: 9px 16px; background: #fff; color: var(--heritage); font-weight: 600;
+            border: 1.5px solid var(--heritage); border-radius: var(--radius-pill);
+            outline: none; cursor: pointer; font-size: 0.84rem; font-family: inherit;
+        }
+        .surprise-btn {
+            padding: 9px 18px; background: var(--gold); color: var(--heritage); font-weight: 700;
+            border: none; border-radius: var(--radius-pill); cursor: pointer; font-size: 0.82rem;
+            display: inline-flex; align-items: center; gap: 7px; white-space: nowrap;
+        }
+        .surprise-btn:hover { background: #BA8730; transform: translateY(-1px); }
+        .surprise-btn.spinning i { animation: spinOnce 0.5s ease; }
+        @keyframes spinOnce { to { transform: rotate(360deg); } }
+
+        /* ================= CATALOG GRID & PRODUCT CARDS ================= */
+        .catalog-grid {
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 28px; padding: 0 5vw; max-width: 1380px; margin: 0 auto;
+        }
+        .life-card {
+            background: var(--card-bg); border-radius: var(--radius-lg); overflow: hidden;
+            position: relative; box-shadow: var(--shadow-soft);
+            border: 1px solid var(--border-subtle); display: flex; flex-direction: column;
+            transition: transform 0.35s ease, box-shadow 0.35s ease;
+        }
+        .life-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-hover); }
+        .life-card.surprise-highlight { animation: surpriseGlow 1.6s ease; }
+        @keyframes surpriseGlow {
+            0% { box-shadow: 0 0 0 0 rgba(201, 151, 62, 0.85); }
+            45% { box-shadow: 0 0 0 14px rgba(201, 151, 62, 0); }
+            100% { box-shadow: var(--shadow-soft); }
+        }
+        .life-card-hidden-admin { opacity: 0.58; }
+        .hidden-ribbon {
+            position: absolute; top: 0; left: 0; right: 0; z-index: 15;
+            background: var(--heritage); color: var(--gold); text-align: center;
+            font-size: 0.68rem; font-weight: 700; letter-spacing: 1.5px; padding: 5px;
+        }
+
+        .image-slider { position: relative; width: 100%; height: 360px; overflow: hidden; background: var(--bg-warm); }
+        .slider-track {
+            display: flex; width: 100%; height: 100%; overflow-x: auto;
+            scroll-snap-type: x mandatory; scroll-behavior: smooth;
+            scrollbar-width: none; -ms-overflow-style: none;
+        }
+        .slider-track::-webkit-scrollbar { display: none; }
+        .slider-track img {
+            min-width: 100%; height: 100%; object-fit: cover;
+            scroll-snap-align: start; flex-shrink: 0; transition: transform 0.5s ease;
+        }
+        .life-card:hover .slider-track img { transform: scale(1.04); }
+        .slider-btn {
+            position: absolute; top: 50%; transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.88); border: none; width: 36px; height: 36px;
+            border-radius: 50%; cursor: pointer; z-index: 10;
+            display: flex; align-items: center; justify-content: center;
+            color: var(--heritage); box-shadow: 0 4px 10px rgba(0, 0, 0, 0.16);
+        }
+        .prev-btn { left: 12px; }
+        .next-btn { right: 12px; }
+        .slider-dots {
+            position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%);
+            display: flex; gap: 6px; z-index: 10; background: rgba(43, 27, 23, 0.35);
+            padding: 5px 10px; border-radius: 20px; backdrop-filter: blur(4px);
+        }
+        .dot { width: 7px; height: 7px; border-radius: 50%; background: rgba(255, 255, 255, 0.65); transition: 0.25s; }
+        .dot.active { background: var(--gold); width: 18px; border-radius: 4px; }
+
+        .badge {
+            position: absolute; top: 16px; left: 16px; z-index: 6;
+            background: rgba(43, 27, 23, 0.9); color: var(--gold);
+            padding: 5px 13px; font-size: 0.72rem; font-weight: 600;
+            border-radius: var(--radius-pill); display: inline-flex; align-items: center; gap: 6px;
+        }
+        .info-icon-btn {
+            position: absolute; top: 16px; right: 16px; z-index: 6;
+            width: 34px; height: 34px; border-radius: 50%;
+            background: rgba(255, 255, 255, 0.94); border: none; cursor: pointer;
+            color: var(--primary); box-shadow: 0 4px 12px rgba(0, 0, 0, 0.14);
+            display: flex; align-items: center; justify-content: center;
+        }
+        .info-icon-btn:hover { background: var(--primary); color: #fff; }
+
+        .card-admin-controls { position: absolute; bottom: 12px; left: 12px; z-index: 20; }
+        .card-kebab-btn {
+            width: 34px; height: 34px; border-radius: 50%; border: none; cursor: pointer;
+            background: rgba(43, 27, 23, 0.8); color: #fff;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .card-admin-menu {
+            display: none; position: absolute; bottom: 42px; left: 0; background: #fff;
+            border-radius: 12px; box-shadow: 0 12px 30px rgba(0, 0, 0, 0.22);
+            padding: 6px; min-width: 175px; flex-direction: column; z-index: 30;
+        }
+        .card-admin-menu.active { display: flex; }
+        .card-admin-menu button {
+            display: flex; align-items: center; gap: 10px; padding: 9px 12px;
+            border: none; background: none; border-radius: 8px; font-size: 0.82rem;
+            font-family: inherit; font-weight: 500; color: var(--text-dark);
+            cursor: pointer; text-align: left; white-space: nowrap;
+        }
+        .card-admin-menu button:hover { background: var(--bg-main); }
+        .card-admin-menu button.danger { color: #C0392B; }
+
+        .card-body { padding: 20px; display: flex; flex-direction: column; flex-grow: 1; }
+        .product-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 8px; }
+        .product-tag {
+            font-size: 0.65rem; font-weight: 700; padding: 3px 9px; border-radius: var(--radius-pill);
+            display: inline-flex; align-items: center; gap: 4px; text-transform: uppercase; letter-spacing: 0.4px;
+        }
+        .tag-handcrafted { background: var(--primary-soft); color: var(--primary); }
+        .tag-festive { background: var(--gold-soft); color: #8A6118; }
+        .tag-bestseller { background: #E7F4EC; color: #1E6B40; }
+        .tag-limited { background: #FBE9E7; color: #C63F17; }
+        .tag-soldout { background: #ECEFF1; color: #546E7A; }
+
+        .prod-name { font-size: 1.28rem; margin-bottom: 6px; font-weight: 700; color: var(--heritage); }
+        .prod-desc { font-size: 0.85rem; color: var(--text-muted); line-height: 1.55; margin-bottom: 14px; flex-grow: 1; }
+        .price-box { margin-bottom: 14px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+        .price { font-size: 1.4rem; font-weight: 700; color: var(--primary); }
+        .old-price { text-decoration: line-through; color: #B4A8A2; font-size: 0.95rem; }
+        .low-stock-chip {
+            color: var(--primary); font-weight: 700; font-size: 0.72rem;
+            background: var(--primary-soft); padding: 3px 10px; border-radius: var(--radius-pill);
+            margin-left: auto;
+        }
+
+        .options-row { display: flex; gap: 8px; margin-bottom: 14px; }
+        select.variant-select {
+            flex: 2; padding: 10px 12px; background: var(--bg-main); border: 1px solid #E5D9CD;
+            border-radius: 12px; outline: none; font-family: inherit; font-size: 0.86rem; color: var(--text-dark);
+        }
+        input.qty-input {
+            flex: 1; max-width: 72px; padding: 10px 8px; background: var(--bg-main);
+            border: 1px solid #E5D9CD; border-radius: 12px; text-align: center;
+            outline: none; font-family: inherit; font-size: 0.92rem; font-weight: 600;
+        }
+        .card-actions { display: flex; gap: 8px; }
+        .buy-wa-btn {
+            flex: 1; padding: 13px 14px; background: var(--whatsapp); color: #fff;
+            border: none; border-radius: 12px; font-weight: 600; cursor: pointer;
+            display: inline-flex; justify-content: center; align-items: center; gap: 8px;
+            font-size: 0.88rem; text-transform: uppercase; letter-spacing: 0.5px;
+            box-shadow: 0 6px 16px rgba(37, 211, 102, 0.25);
+        }
+        .buy-wa-btn:hover { background: #1fb855; }
+        .restock-btn { background: var(--gold) !important; color: var(--heritage) !important; box-shadow: none !important; }
+        .share-btn {
+            width: 46px; background: var(--bg-main); color: var(--text-muted);
+            border: 1px solid #E5D9CD; border-radius: 12px; cursor: pointer;
+            display: inline-flex; align-items: center; justify-content: center; font-size: 1rem;
+        }
+        .share-btn:hover { background: var(--primary-soft); color: var(--primary); }
+        .wishlist-btn.active { background: var(--primary); color: #fff; border-color: var(--primary); }
+
+        .no-results {
+            text-align: center; padding: 48px 20px; color: var(--text-muted);
+            font-size: 1.05rem; display: none;
+        }
+
+        /* ================= STYLE FINDER ================= */
+        .style-finder {
+            padding: 64px 5vw;
+            background: linear-gradient(160deg, var(--bg-warm) 0%, var(--bg-main) 70%);
+            margin-top: 56px;
+        }
+        .finder-card {
+            max-width: 740px; margin: 0 auto; background: #fff; border-radius: 28px;
+            padding: 38px 32px; box-shadow: var(--shadow-soft);
+            border: 1px solid var(--border-subtle);
+        }
+        .finder-header { display: flex; align-items: center; gap: 16px; margin-bottom: 26px; }
+        .finder-icon {
+            width: 54px; height: 54px; border-radius: 50%; background: var(--primary-soft);
+            color: var(--primary); display: flex; align-items: center; justify-content: center;
+            font-size: 1.4rem; flex-shrink: 0;
+        }
+        .finder-header h3 { font-size: 1.45rem; margin-bottom: 3px; }
+        .finder-header p { color: var(--text-muted); font-size: 0.88rem; }
+        .gf-step { display: none; }
+        .gf-step.active { display: block; animation: fadeUp 0.35s ease; }
+        .gf-step label { display: block; font-weight: 600; color: var(--heritage); margin-bottom: 14px; }
+        .gf-options { display: flex; flex-wrap: wrap; gap: 10px; }
+        .gf-chip {
+            background: var(--bg-main); border: 1.5px solid #E5D9CD; padding: 11px 18px;
+            border-radius: var(--radius-pill); cursor: pointer; font-family: inherit;
+            font-size: 0.88rem; font-weight: 600; color: var(--text-dark);
+            display: inline-flex; align-items: center; gap: 8px;
+        }
+        .gf-chip:hover, .gf-chip.selected {
+            border-color: var(--primary); background: var(--primary); color: #fff;
+        }
+        .gf-result { display: none; text-align: center; padding-top: 8px; }
+        .gf-result.active { display: block; animation: fadeUp 0.35s ease; }
+        .gf-result p { font-size: 1.05rem; margin-bottom: 20px; }
+        .gf-result strong { color: var(--primary); }
+        .gf-cta {
+            background: var(--primary); color: #fff; border: none; padding: 13px 28px;
+            border-radius: var(--radius-pill); font-weight: 600; cursor: pointer; margin-right: 12px;
+        }
+        .gf-restart { background: none; border: none; color: var(--text-muted); text-decoration: underline; cursor: pointer; font-size: 0.85rem; }
+
+        /* ================= OUR HERITAGE STORY ================= */
+        .story-section {
+            padding: 76px 5vw; background: var(--heritage); color: #FDF9F3;
+        }
+        .story-grid {
+            max-width: 1160px; margin: 0 auto;
+            display: grid; grid-template-columns: 1.15fr 1fr; gap: 48px; align-items: center;
+        }
+        .story-eyebrow {
+            display: inline-block; color: var(--gold); text-transform: uppercase;
+            letter-spacing: 2.2px; font-size: 0.76rem; font-weight: 600; margin-bottom: 12px;
+        }
+        .story-section h2 { color: #FDF9F3; font-size: clamp(1.9rem, 3.4vw, 2.7rem); line-height: 1.2; margin-bottom: 18px; }
+        .story-section p { color: rgba(253, 249, 243, 0.8); line-height: 1.8; margin-bottom: 16px; font-size: 0.96rem; }
+        .story-pillars {
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 24px;
+        }
+        .pillar-box {
+            background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(201, 151, 62, 0.28);
+            border-radius: 16px; padding: 16px; text-align: center;
+        }
+        .pillar-box i { color: var(--gold); font-size: 1.3rem; margin-bottom: 8px; display: block; }
+        .pillar-box strong { display: block; font-size: 0.86rem; color: #fff; }
+        .pillar-box span { font-size: 0.74rem; color: rgba(253, 249, 243, 0.65); }
+
+        .story-arch-card {
+            background: linear-gradient(160deg, rgba(201, 151, 62, 0.16), rgba(166, 75, 42, 0.18));
+            border: 1px solid rgba(201, 151, 62, 0.35);
+            border-radius: 180px 180px 24px 24px;
+            padding: 36px 28px; text-align: center;
+        }
+        .story-arch-card .hindi-brand { font-size: 2.4rem; color: var(--gold); display: block; }
+        .story-arch-card .script-brand { font-size: 2.2rem; color: #FDF9F3; display: block; margin-top: -6px; }
+        .story-arch-quote {
+            margin-top: 18px; font-family: 'Playfair Display', serif; font-style: italic;
+            font-size: 1.05rem; color: rgba(253, 249, 243, 0.9);
+        }
+
+        /* ================= REVIEWS (LW MUSES) ================= */
+        .reviews-section { padding: 64px 5vw; background: var(--bg-main); }
+        .reviews-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+            gap: 24px; max-width: 1200px; margin: 0 auto;
+        }
+        .review-card {
+            background: #fff; padding: 28px; border-radius: 20px;
+            border: 1px solid var(--border-subtle); box-shadow: var(--shadow-soft);
+        }
+        .review-header { display: flex; align-items: center; gap: 14px; margin-bottom: 14px; }
+        .reviewer-initial {
+            width: 44px; height: 44px; border-radius: 50%;
+            background: var(--primary-soft); color: var(--primary);
+            display: flex; align-items: center; justify-content: center;
+            font-weight: 700; font-size: 1.1rem; flex-shrink: 0;
+        }
+        .stars { color: var(--gold); font-size: 0.82rem; margin-top: 2px; }
+        .review-text { color: var(--text-muted); font-size: 0.9rem; font-style: italic; line-height: 1.65; }
+
+        /* ================= INSTAGRAM SECTION ================= */
+        .ig-section { padding: 56px 5vw 72px; background: var(--bg-warm); text-align: center; }
+        .ig-highlights {
+            display: flex; justify-content: center; gap: 22px; flex-wrap: wrap;
+            max-width: 820px; margin: 0 auto 30px;
+        }
+        .ig-circle {
+            display: flex; flex-direction: column; align-items: center; gap: 8px;
+            text-decoration: none; color: var(--heritage); font-size: 0.8rem; font-weight: 600;
+        }
+        .ig-ring {
+            width: 72px; height: 72px; border-radius: 50%; padding: 3px;
+            background: linear-gradient(45deg, var(--gold), var(--primary), #C13584);
+            display: flex; align-items: center; justify-content: center;
+        }
+        .ig-ring-inner {
+            width: 100%; height: 100%; border-radius: 50%; background: #fff;
+            display: flex; align-items: center; justify-content: center;
+            color: var(--primary); font-size: 1.3rem;
+        }
+        .btn-instagram {
+            display: inline-flex; align-items: center; gap: 10px;
+            background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+            color: #fff; padding: 13px 30px; border-radius: var(--radius-pill);
+            text-decoration: none; font-weight: 600; font-size: 0.92rem;
+            box-shadow: 0 10px 24px rgba(220, 39, 67, 0.28);
+        }
+
+        /* ================= FOOTER ================= */
+        .site-footer { background: #1D120F; color: rgba(253, 249, 243, 0.82); padding: 64px 5vw 0; }
+        .footer-grid {
+            max-width: 1260px; margin: 0 auto;
+            display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 40px;
+            padding-bottom: 42px; border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .footer-about { margin-top: 14px; font-size: 0.9rem; line-height: 1.7; color: rgba(253, 249, 243, 0.68); max-width: 380px; }
+        .footer-col h4 {
+            color: var(--gold); font-size: 0.82rem; text-transform: uppercase;
+            letter-spacing: 1.6px; margin-bottom: 18px; font-family: 'Poppins', sans-serif;
+        }
+        .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+        .footer-col a, .footer-col span {
+            color: rgba(253, 249, 243, 0.72); text-decoration: none; font-size: 0.9rem;
+            display: inline-flex; align-items: center; gap: 10px;
+        }
+        .footer-col a:hover { color: var(--gold); }
+        .footer-bottom {
+            max-width: 1260px; margin: 0 auto; padding: 20px 0 96px;
+            display: flex; flex-wrap: wrap; gap: 12px; justify-content: space-between; align-items: center;
+            font-size: 0.8rem; color: rgba(253, 249, 243, 0.5);
+        }
+        .admin-fab {
+            display: inline-flex; align-items: center; gap: 6px;
+            color: rgba(253, 249, 243, 0.55); text-decoration: none;
+            font-size: 0.8rem; cursor: pointer; padding: 5px 12px;
+            border-radius: var(--radius-pill); border: 1px solid rgba(255, 255, 255, 0.16);
+            background: none; font-family: inherit;
+        }
+        .admin-fab:hover, .admin-fab.is-admin { color: var(--gold); border-color: var(--gold); }
+
+        /* ================= FLOATING CONTROLS ================= */
+        .floating-bar {
+            position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%);
+            background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(18px);
+            display: flex; gap: 12px; padding: 10px 20px; border-radius: var(--radius-pill);
+            box-shadow: 0 18px 44px rgba(43, 27, 23, 0.18);
+            border: 1px solid var(--border-subtle); z-index: 3000;
+        }
+        .action-icon {
+            width: 46px; height: 46px; border-radius: 50%; display: flex;
+            align-items: center; justify-content: center; text-decoration: none;
+            font-size: 1.2rem; background: var(--bg-main); color: var(--heritage); border: none; cursor: pointer;
+        }
+        .action-icon:hover { transform: translateY(-4px); }
+        .ic-wa { color: var(--whatsapp); background: #E8F8EE; }
+        .ic-ig { color: #fff; background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
+        .ic-chat { color: var(--primary); background: var(--primary-soft); }
+
+        .wishlist-fab {
+            position: fixed; bottom: 96px; left: 20px; z-index: 3500;
+            width: 50px; height: 50px; border-radius: 50%; background: #fff;
+            color: var(--primary); border: 1.5px solid var(--primary-soft);
+            cursor: pointer; font-size: 1.15rem; box-shadow: 0 10px 24px rgba(43, 27, 23, 0.14);
+            display: flex; align-items: center; justify-content: center;
+        }
+        .wishlist-count {
+            display: none; position: absolute; top: -4px; right: -4px;
+            min-width: 20px; height: 20px; padding: 0 5px; border-radius: 10px;
+            background: var(--heritage); color: var(--gold); font-size: 0.68rem; font-weight: 700;
+            align-items: center; justify-content: center;
+        }
+        .back-to-top {
+            position: fixed; bottom: 96px; right: 20px; z-index: 3500;
+            width: 44px; height: 44px; border-radius: 50%;
+            background: var(--heritage); color: var(--gold); border: none; cursor: pointer;
+            opacity: 0; visibility: hidden; transform: translateY(10px);
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 10px 24px rgba(43, 27, 23, 0.2);
+        }
+        .back-to-top.visible { opacity: 1; visibility: visible; transform: translateY(0); }
+
+        /* ================= MODALS & DRAWERS ================= */
+        .modal-overlay {
+            display: none; position: fixed; inset: 0; background: rgba(43, 27, 23, 0.62);
+            backdrop-filter: blur(5px); z-index: 10000; align-items: center; justify-content: center; padding: 18px;
+        }
+        .modal-overlay.active { display: flex; }
+        .modal-box {
+            background: var(--bg-main); border-radius: 24px; max-width: 480px; width: 100%;
+            padding: 32px 28px; position: relative; box-shadow: 0 28px 60px rgba(0, 0, 0, 0.28);
+            max-height: 88vh; overflow-y: auto; animation: fadeUp 0.3s ease;
+        }
+        .modal-box.wide { max-width: 640px; }
+        .modal-close {
+            position: absolute; top: 16px; right: 16px; width: 34px; height: 34px;
+            border-radius: 50%; background: #EFE6DC; border: none; color: var(--text-dark);
+            cursor: pointer; font-size: 0.95rem;
+        }
+        .modal-close:hover { background: var(--primary); color: #fff; }
+        .modal-box h3 { font-size: 1.45rem; margin-bottom: 18px; text-align: center; }
+
+        .admin-field { margin-bottom: 14px; }
+        .admin-field label {
+            display: block; font-size: 0.76rem; font-weight: 700; color: var(--text-muted);
+            text-transform: uppercase; letter-spacing: 0.6px; margin-bottom: 6px;
+        }
+        .admin-field input, .admin-field textarea, .admin-field select {
+            width: 100%; padding: 11px 14px; border: 1.5px solid #E4D7C9; border-radius: 12px;
+            background: #fff; font-family: inherit; font-size: 0.9rem; outline: none; color: var(--text-dark);
+        }
+        .admin-field input:focus, .admin-field textarea:focus, .admin-field select:focus { border-color: var(--primary); }
+        .admin-field small { display: block; color: var(--text-muted); font-size: 0.74rem; margin-top: 4px; }
+        .admin-field-row { display: flex; gap: 12px; }
+        .admin-field-row .admin-field { flex: 1; }
+
+        .admin-submit-btn {
+            width: 100%; background: var(--primary); color: #fff; border: none; padding: 14px;
+            border-radius: var(--radius-pill); font-weight: 600; text-transform: uppercase;
+            letter-spacing: 1px; cursor: pointer; font-size: 0.9rem; margin-top: 6px;
+        }
+        .admin-submit-btn:hover { background: var(--primary-dark); }
+        .admin-error { color: #C0392B; font-size: 0.84rem; text-align: center; margin-top: 10px; display: none; }
+
+        .tag-checkbox-group { display: flex; flex-wrap: wrap; gap: 8px; }
+        .tag-checkbox {
+            display: inline-flex; align-items: center; gap: 6px; background: #fff;
+            padding: 7px 12px; border-radius: var(--radius-pill); font-size: 0.82rem;
+            border: 1px solid #E4D7C9; cursor: pointer;
+        }
+        .admin-img-list { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 10px; }
+        .admin-img-thumb {
+            position: relative; width: 68px; height: 68px; border-radius: 10px; overflow: hidden;
+            border: 1px solid #E4D7C9;
+        }
+        .admin-img-thumb img { width: 100%; height: 100%; object-fit: cover; }
+        .admin-img-thumb button {
+            position: absolute; top: 2px; right: 2px; width: 20px; height: 20px; border-radius: 50%;
+            background: rgba(0, 0, 0, 0.65); color: #fff; border: none; cursor: pointer; font-size: 0.7rem;
+        }
+
+        /* Care modal list */
+        .care-modal-body h4 {
+            font-size: 0.78rem; text-transform: uppercase; letter-spacing: 1px;
+            color: var(--primary); margin: 16px 0 8px; display: flex; align-items: center; gap: 8px;
+        }
+        .care-modal-body ul { list-style: none; }
+        .care-modal-body li {
+            font-size: 0.88rem; padding: 5px 0; display: flex; gap: 10px; align-items: flex-start;
+        }
+        .care-modal-body li i { color: var(--gold); margin-top: 4px; flex-shrink: 0; }
+
+        /* Wishlist Drawer */
+        .wishlist-overlay {
+            display: none; position: fixed; inset: 0; background: rgba(43, 27, 23, 0.52);
+            backdrop-filter: blur(4px); z-index: 10000; justify-content: flex-end;
+        }
+        .wishlist-overlay.active { display: flex; }
+        .wishlist-panel {
+            background: var(--bg-main); width: 400px; max-width: 92vw; height: 100%;
+            display: flex; flex-direction: column; box-shadow: -18px 0 46px rgba(0, 0, 0, 0.22);
+        }
+        .wishlist-panel-header {
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 22px 22px 16px; border-bottom: 1px solid var(--border-subtle);
+        }
+        .wishlist-items { flex: 1; overflow-y: auto; padding: 10px 20px; }
+        .wishlist-item {
+            display: flex; align-items: center; gap: 12px; padding: 12px 0;
+            border-bottom: 1px solid #EFE6DC;
+        }
+        .wishlist-item img { width: 58px; height: 58px; border-radius: 10px; object-fit: cover; }
+        .wishlist-item-info { flex: 1; min-width: 0; }
+        .wishlist-item-info h4 { font-size: 0.9rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+        .wishlist-item-info span { color: var(--primary); font-weight: 700; font-size: 0.86rem; }
+        .wishlist-panel-footer {
+            display: none; flex-direction: column; gap: 10px; padding: 16px 20px;
+            border-top: 1px solid var(--border-subtle);
+        }
+
+        /* Helper Chat Panel */
+        .chat-overlay {
+            display: none; position: fixed; inset: 0; z-index: 10000;
+            background: rgba(43, 27, 23, 0.35); align-items: flex-end; justify-content: flex-end; padding: 20px;
+        }
+        .chat-overlay.active { display: flex; }
+        .chat-panel {
+            width: 340px; max-width: 100%; max-height: 70vh; background: #fff;
+            border-radius: 22px; box-shadow: 0 20px 50px rgba(0, 0, 0, 0.24);
+            display: flex; flex-direction: column; overflow: hidden;
+        }
+        .chat-header {
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 14px 16px; background: var(--heritage); color: #fff;
+        }
+        .chat-body { flex: 1; overflow-y: auto; padding: 16px; display: flex; flex-direction: column; gap: 10px; }
+        .chat-msg { max-width: 86%; padding: 10px 14px; border-radius: 14px; font-size: 0.84rem; line-height: 1.5; }
+        .chat-bot { background: var(--primary-soft); color: var(--heritage); align-self: flex-start; border-bottom-left-radius: 4px; }
+        .chat-user { background: var(--primary); color: #fff; align-self: flex-end; border-bottom-right-radius: 4px; }
+        .chat-options { display: flex; flex-direction: column; gap: 7px; }
+        .chat-option {
+            background: #fff; border: 1.5px solid var(--primary-soft); color: var(--primary);
+            padding: 8px 13px; border-radius: 18px; font-size: 0.8rem; font-weight: 600;
+            cursor: pointer; text-align: left; font-family: inherit;
+        }
+        .chat-option:hover { background: var(--primary-soft); }
+
+        /* Maintenance Overlay */
+        .construction-overlay {
+            display: none; position: fixed; inset: 0; z-index: 99999;
+            background: radial-gradient(circle at 50% 30%, #44281F 0%, var(--heritage) 65%);
+            color: #FDF9F3; flex-direction: column; align-items: center; justify-content: center;
+            text-align: center; padding: 30px;
+        }
+        .construction-overlay.active { display: flex; }
+
+        /* Toast & Micro-bursts */
+        .toast-container {
+            position: fixed; top: 18px; left: 50%; transform: translateX(-50%); z-index: 20000;
+            display: flex; flex-direction: column; gap: 8px; pointer-events: none;
+        }
+        .toast {
+            background: var(--heritage); color: #fff; padding: 11px 22px; border-radius: var(--radius-pill);
+            font-size: 0.84rem; font-weight: 500; box-shadow: 0 12px 28px rgba(0, 0, 0, 0.24);
+            display: inline-flex; align-items: center; gap: 9px;
+            animation: toastIn 0.35s ease forwards;
+        }
+        .toast i { color: var(--gold); }
+        @keyframes toastIn { from { opacity: 0; transform: translateY(-16px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+        .heart-burst-piece {
+            position: fixed; color: var(--primary); pointer-events: none; z-index: 15000;
+            animation: heartFloat 1s ease-out forwards;
+        }
+        @keyframes heartFloat {
+            0% { transform: translate(-50%, -50%) scale(0.6); opacity: 1; }
+            100% { transform: translate(-50%, -140px) translateX(var(--dx)) scale(0.9); opacity: 0; }
+        }
+        .confetti-piece-fixed {
+            position: fixed; width: 8px; height: 8px; border-radius: 2px; z-index: 15000; pointer-events: none;
+            animation: confettiBurst 0.85s ease-out forwards;
+        }
+        @keyframes confettiBurst { to { transform: translate(var(--tx), var(--ty)) rotate(360deg); opacity: 0; } }
+
+        /* Confirm Dialog Modal (replaces native confirm()) */
+        .confirm-actions { display: flex; gap: 10px; justify-content: flex-end; margin-top: 20px; }
+        .btn-cancel {
+            padding: 10px 20px; border-radius: var(--radius-pill); border: 1.5px solid #D8CBBF;
+            background: #fff; color: var(--text-dark); font-weight: 600; cursor: pointer;
+        }
+        .btn-danger {
+            padding: 10px 20px; border-radius: var(--radius-pill); border: none;
+            background: #C0392B; color: #fff; font-weight: 600; cursor: pointer;
+        }
+
+        @media (max-width: 860px) {
+            .header-nav-group { display: none; }
+            .story-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr; gap: 28px; }
+            .filter-section { position: static; }
+            .hero::before { inset: 10px; border-radius: 90px 90px 16px 16px; }
+            .story-pillars { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- ================= MAINTENANCE OVERLAY ================= -->
+    <div id="constructionOverlay" class="construction-overlay">
+        <div class="brand-crest" style="width:76px; height:76px; margin-bottom:18px;">
+            <svg viewBox="0 0 100 100" width="58" height="58" aria-hidden="true">
+                <path d="M20 75 L20 46 Q50 18 80 46 L80 75 Z" fill="none" stroke="#A64B2A" stroke-width="3.5"/>
+                <path d="M35 75 L35 50 Q50 32 65 50 L65 75" fill="none" stroke="#C9973E" stroke-width="2.5"/>
+                <circle cx="50" cy="22" r="4" fill="#C9973E"/>
+            </svg>
+        </div>
+        <span class="hindi-brand" style="font-size:2.4rem; color:var(--gold);">लखनवी</span>
+        <span class="script-brand" style="font-size:2rem; color:#FDF9F3; margin-bottom:16px;">weaves</span>
+        <h1 style="color:#FDF9F3; font-size:1.9rem; margin-bottom:12px;">Aadaab — We're Curating Fresh Chikankari</h1>
+        <p style="max-width:460px; color:rgba(253,249,243,0.75); margin-bottom:28px;">
+            Our online boutique is getting a quick refresh. Meanwhile, reach out directly on WhatsApp or Instagram for orders.
+        </p>
+        <div style="display:flex; gap:12px; flex-wrap:wrap; justify-content:center;">
+            <a id="maintWaBtn" href="https://wa.me/919800000000" target="_blank" class="btn-hero btn-primary" style="background:var(--whatsapp); border-color:var(--whatsapp);">
+                <i class="fab fa-whatsapp"></i> Order on WhatsApp
+            </a>
+            <a id="maintIgBtn" href="https://www.instagram.com/lucknowiweaves/" target="_blank" class="btn-instagram">
+                <i class="fab fa-instagram"></i> @lucknowiweaves
+            </a>
+        </div>
+    </div>
+
+    <!-- ================= ADMIN MAINTENANCE REMINDER ================= -->
+    <div id="constructionAdminBanner" class="construction-admin-banner">
+        <i class="fas fa-triangle-exclamation"></i> Maintenance Mode is ON — visitors see the Coming Back Soon screen.
+        <button type="button" onclick="toggleUnderConstruction()">Turn Off</button>
+    </div>
+
+    <!-- ================= VIBE MARQUEE (Editable) ================= -->
+    <div class="vibe-marquee">
+        <div class="marquee-track" id="marqueeTrack"></div>
+    </div>
+
+    <!-- ================= HEADER ================= -->
+    <header>
+        <a href="#" class="header-brand">
+            <div class="brand-crest" aria-hidden="true">
+                <!-- Inspired by the लखनवी weaves Mughal arch crest -->
+                <svg viewBox="0 0 100 100" width="38" height="38">
+                    <path d="M18 76 L18 48 Q50 16 82 48 L82 76" fill="none" stroke="#A64B2A" stroke-width="4" stroke-linecap="round"/>
+                    <path d="M32 76 L32 52 Q50 32 68 52 L68 76" fill="none" stroke="#C9973E" stroke-width="2.6"/>
+                    <path d="M50 18 L50 11 M46 14 L54 14" stroke="#C9973E" stroke-width="2.2" stroke-linecap="round"/>
+                    <circle cx="24" cy="40" r="3" fill="#C9973E"/>
+                    <circle cx="76" cy="40" r="3" fill="#C9973E"/>
+                </svg>
+            </div>
+            <div>
+                <div class="logo-lockup">
+                    <span class="hindi-brand">लखनवी</span>
+                    <span class="script-brand">weaves</span>
+                </div>
+                <span class="logo-sub" id="headerSubtext">The Chikankari Legacy</span>
+            </div>
+        </a>
+
+        <div class="header-nav-group">
+            <nav>
+                <ul>
+                    <li><a href="#catalog">Shop</a></li>
+                    <li><a href="#styleFinder">Style Finder</a></li>
+                    <li><a href="#our-story">Our Story</a></li>
+                    <li><a href="#lw-muses">Reviews</a></li>
+                    <li><a href="#instagram-section">Instagram</a></li>
+                </ul>
+            </nav>
+            <a id="headerWaBtn" href="https://wa.me/919800000000" target="_blank" class="header-wa-btn">
+                <i class="fab fa-whatsapp"></i> <span>Order</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- ================= ADMIN TOOLBAR ================= -->
+    <div class="admin-bar" id="adminBar">
+        <span class="admin-bar-title"><i class="fas fa-crown"></i> Admin Studio — Live Edit Mode</span>
+        <div class="admin-bar-actions">
+            <button type="button" class="admin-btn-primary" onclick="openProductForm()"><i class="fas fa-plus"></i> Add Product</button>
+            <button type="button" class="admin-btn-primary" style="background:var(--primary); color:#fff;" onclick="openPageEditor()"><i class="fas fa-pen-to-square"></i> Edit Main Page</button>
+            <button type="button" class="admin-btn-ghost" onclick="openCareGuideManager()"><i class="fas fa-shirt"></i> Care Guides</button>
+            <button type="button" class="admin-btn-ghost" onclick="openGithubSettings()"><i class="fab fa-github"></i> GitHub Sync</button>
+            <button type="button" class="admin-btn-ghost" onclick="toggleUnderConstruction()"><i class="fas fa-screwdriver-wrench"></i> Maintenance</button>
+            <button type="button" class="admin-btn-ghost" onclick="adminLogout()"><i class="fas fa-right-from-bracket"></i> Logout</button>
+        </div>
+    </div>
+
+    <!-- ================= HERO SECTION (Editable) ================= -->
+    <section class="hero" id="heroSection">
+        <!-- Lucknowi Pinterest-style backdrop: warm golden-hour glow, Chikankari jaali lattice & Rumi Darwaza scalloped arches -->
+        <div class="hero-lucknow-art" aria-hidden="true">
+            <div class="hero-sunbeam"></div>
+            <!-- Delicate Chikankari jaali diamond embroidery texture -->
+            <svg class="hero-jali-svg" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <pattern id="chikankariJali" width="56" height="56" patternUnits="userSpaceOnUse">
+                        <path d="M28 4 L52 28 L28 52 L4 28 Z" fill="none" stroke="#C9973E" stroke-width="0.7" opacity="0.28"/>
+                        <circle cx="28" cy="28" r="2.2" fill="#A64B2A" opacity="0.22"/>
+                        <path d="M28 16 Q32 24 28 28 Q24 24 28 16 M28 40 Q32 32 28 28 Q24 32 28 40 M16 28 Q24 24 28 28 Q24 32 16 28 M40 28 Q32 24 28 28 Q32 32 40 28" fill="none" stroke="#A64B2A" stroke-width="0.65" opacity="0.22"/>
+                        <circle cx="28" cy="4" r="1.2" fill="#C9973E" opacity="0.35"/>
+                        <circle cx="4" cy="28" r="1.2" fill="#C9973E" opacity="0.35"/>
+                    </pattern>
+                </defs>
+                <rect width="100%" height="100%" fill="url(#chikankariJali)"/>
+            </svg>
+            <!-- Scalloped Lucknowi Mehrab / Rumi Darwaza architectural silhouette -->
+            <svg class="hero-arch-svg" viewBox="0 0 1200 620" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMax slice">
+                <!-- Distant sandstone domes & minarets (Bara Imambara / Rumi Darwaza mood) -->
+                <path d="M110 620 V420 Q110 385 145 365 Q180 385 180 420 V620" fill="#EAD7C1" opacity="0.45"/>
+                <path d="M1020 620 V420 Q1020 385 1055 365 Q1090 385 1090 420 V620" fill="#EAD7C1" opacity="0.45"/>
+                <!-- Minaret spires -->
+                <path d="M145 365 V332 M138 345 H152" stroke="#C9973E" stroke-width="1.6" opacity="0.5"/>
+                <path d="M1055 365 V332 M1048 345 H1062" stroke="#C9973E" stroke-width="1.6" opacity="0.5"/>
+                <!-- Outer Grand Scalloped Nawabi Arch -->
+                <path d="M185 620 V300 C185 265 215 245 240 225 C255 190 295 170 335 155 C365 115 415 95 465 88 C515 58 565 44 600 22 C635 44 685 58 735 88 C785 95 835 115 865 155 C905 170 945 190 960 225 C985 245 1015 265 1015 300 V620" stroke="#A64B2A" stroke-width="1.8" opacity="0.28"/>
+                <!-- Inner Delicate Zari Arch -->
+                <path d="M215 620 V310 C215 278 242 260 264 242 C278 210 314 192 350 178 C378 142 424 124 472 117 C518 90 566 76 600 54 C634 76 682 90 728 117 C776 124 822 142 850 178 C886 192 922 210 936 242 C958 260 985 278 985 310 V620" stroke="#C9973E" stroke-width="1.3" stroke-dasharray="4 5" opacity="0.55"/>
+                <!-- Top Kalash / Finial ornament -->
+                <circle cx="600" cy="18" r="4" fill="#C9973E" opacity="0.65"/>
+                <path d="M600 4 V14" stroke="#C9973E" stroke-width="1.5" opacity="0.65"/>
+                <!-- Left & Right Botanical Chikan Corner Motifs -->
+                <g opacity="0.32" stroke="#A64B2A" stroke-width="1.4" fill="none">
+                    <path d="M70 540 C95 495 135 480 150 435 C120 445 92 475 70 540 Z"/>
+                    <path d="M98 565 C130 535 165 530 190 495 C155 498 120 520 98 565 Z"/>
+                    <circle cx="152" cy="432" r="4" fill="#C9973E" stroke="none"/>
+                    <path d="M1130 540 C1105 495 1065 480 1050 435 C1080 445 1108 475 1130 540 Z"/>
+                    <path d="M1102 565 C1070 535 1035 530 1010 495 C1045 498 1080 520 1102 565 Z"/>
+                    <circle cx="1048" cy="432" r="4" fill="#C9973E" stroke="none"/>
+                </g>
+            </svg>
+        </div>
+
+        <div class="hero-inner">
+            <div class="hero-welcome" id="heroWelcome">Aadaab ✨ — Mom-Owned • Homegrown • Handcrafted</div>
+            <h1 id="heroTitle">Woven in Lucknow for <span>Your Wardrobe</span></h1>
+            <p id="heroSubtitle">Authentic hand-embroidered Chikankari kurtas, breezy georgette sarees &amp; Chanderi sparkle sets — crafted with timeless grace for daily classics and festive statements.</p>
+
+            <div class="hero-chips">
+                <span class="hero-chip"><i class="fas fa-feather-pointed"></i> Hand-Embroidered</span>
+                <span class="hero-chip"><i class="fas fa-sun"></i> Daily Classics</span>
+                <span class="hero-chip"><i class="fas fa-sparkles"></i> Festive Statements</span>
+                <span class="hero-chip"><i class="fas fa-heart"></i> Mom-Owned Brand</span>
+            </div>
+
+            <div class="hero-buttons">
+                <a href="#catalog" class="btn-hero btn-primary"><i class="fas fa-bag-shopping"></i> Explore Collection</a>
+                <a id="heroWaBtn" href="https://wa.me/919800000000" target="_blank" class="btn-hero btn-secondary"><i class="fab fa-whatsapp"></i> Chat to Customize</a>
+            </div>
+
+            <div class="trust-row">
+                <span><i class="fas fa-award"></i> Authentic Lucknowi Karigari</span>
+                <span>·</span>
+                <span><i class="fab fa-whatsapp"></i> Direct WhatsApp Ordering</span>
+                <span>·</span>
+                <span><i class="fas fa-truck-fast"></i> Pan-India Delivery</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= PROMO / ANNOUNCEMENT BANNER (Editable) ================= -->
+    <a id="promoBanner" href="#catalog" class="promo-banner">
+        <i class="fas fa-sparkles"></i>
+        <span id="promoBannerText"><strong>Handmade With Love, Just For You</strong> — Complimentary inner slip guidance &amp; pan-India shipping on festive orders</span>
+        <i class="fas fa-arrow-right"></i>
+    </a>
+
+    <!-- ================= CATALOG & FILTERS ================= -->
+    <section id="catalog">
+        <h2 class="section-title reveal">The Chikankari Edit</h2>
+        <p class="section-subtitle">Swipe photos on any piece to see close-up embroidery details, then reserve directly on WhatsApp.</p>
+
+        <div class="filter-section">
+            <div class="filter-controls">
+                <div class="search-wrapper">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" id="searchInput" class="search-input" placeholder="Search 'Chanderi', 'Georgette Saree', 'White Kurta', 'Pastel'..." oninput="applyFilters()">
+                    <button type="button" class="search-clear" id="searchClear" onclick="clearSearch()"><i class="fas fa-times"></i></button>
+                </div>
+                <div class="filter-row">
+                    <div class="filter-tabs" id="filterTabs"></div>
+                    <div class="filter-right">
+                        <select id="priceFilter" class="sort-select" onchange="applyFilters()">
+                            <option value="all">Price: All</option>
+                            <option value="under1500">Under ₹1,500</option>
+                            <option value="mid">₹1,500 – ₹3,000</option>
+                            <option value="premium">Festive Luxe (₹3,000+)</option>
+                        </select>
+                        <button type="button" class="surprise-btn" onclick="surpriseMe()">
+                            <i class="fas fa-wand-magic-sparkles"></i> Surprise Me
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="catalog-grid" id="productGrid"></div>
+        <div id="noResults" class="no-results">
+            <i class="fas fa-magnifying-glass" style="font-size:1.8rem; color:var(--primary); margin-bottom:10px; display:block;"></i>
+            No pieces match that filter right now. Try clearing your search or picking another collection.
+        </div>
+    </section>
+
+    <!-- ================= STYLE FINDER ================= -->
+    <section class="style-finder" id="styleFinder">
+        <div class="finder-card reveal">
+            <div class="finder-header">
+                <div class="finder-icon"><i class="fas fa-compass"></i></div>
+                <div>
+                    <h3>Find Your Perfect Weave</h3>
+                    <p>Two quick taps — tell us the occasion and we'll take you straight to the right edit.</p>
+                </div>
+            </div>
+
+            <div class="gf-step active" id="pfStep1">
+                <label>What are you dressing for?</label>
+                <div class="gf-options">
+                    <button type="button" class="gf-chip" onclick="pfSelectOccasion('Daily Classics', 'Everyday effortless comfort')"><i class="fas fa-sun"></i> Daily Classics</button>
+                    <button type="button" class="gf-chip" onclick="pfSelectOccasion('Festive Statements', 'Weddings, pujas & celebrations')"><i class="fas fa-sparkles"></i> Festive Statements</button>
+                    <button type="button" class="gf-chip" onclick="pfSelectOccasion('Chikankari Sarees', 'Graceful 6.5m drapes')"><i class="fas fa-feather"></i> Saree Drapes</button>
+                    <button type="button" class="gf-chip" onclick="pfSelectOccasion('Chanderi Edit', 'Subtle shimmer & royal pastel')"><i class="fas fa-gem"></i> Chanderi Sparkle</button>
+                </div>
+            </div>
+
+            <div class="gf-result" id="pfResult">
+                <p id="pfResultText"></p>
+                <button type="button" class="gf-cta" onclick="pfGoToCollection()">View Collection <i class="fas fa-arrow-right"></i></button>
+                <button type="button" class="gf-restart" onclick="pfRestart()">Start Over</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= OUR STORY (Editable) ================= -->
+    <section class="story-section" id="our-story">
+        <div class="story-grid">
+            <div class="reveal">
+                <span class="story-eyebrow">The Chikankari Legacy</span>
+                <h2 id="storyHeading">Mom-Owned, Homegrown &amp; Stitched With Soul</h2>
+                <p id="storyBody">
+                    Born from a deep love for Lucknow's centuries-old needlecraft, लखनवी weaves brings authentic hand-embroidered Chikankari directly from master artisans to your wardrobe. Every piece is thoughtfully handpicked for fabric softness, delicate shadow-work, and effortless drape.
+                </p>
+                <div class="story-pillars">
+                    <div class="pillar-box">
+                        <i class="fas fa-hands-holding-heart"></i>
+                        <strong>Mom-Owned</strong>
+                        <span>Personal quality check on every piece</span>
+                    </div>
+                    <div class="pillar-box">
+                        <i class="fas fa-scissors"></i>
+                        <strong>Handcrafted</strong>
+                        <span>Real Lucknowi needlework, never mass-printed</span>
+                    </div>
+                    <div class="pillar-box">
+                        <i class="fas fa-gift"></i>
+                        <strong>Packed With Love</strong>
+                        <span>Signature eco-kraft gifting &amp; care tag</span>
+                    </div>
+                </div>
+            </div>
+            <div class="story-arch-card reveal">
+                <span class="hindi-brand">लखनवी</span>
+                <span class="script-brand">weaves</span>
+                <p class="story-arch-quote">"A little white, a lot of colour — and the timeless nazakat of Lucknow in every thread."</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= LW MUSES & FEEDBACK ================= -->
+    <section class="reviews-section" id="lw-muses">
+        <h2 class="section-title reveal" style="margin-top:0;">LW Muses &amp; Love</h2>
+        <p class="section-subtitle">Kind words from women who wear लखनवी weaves across India</p>
+        <div class="reviews-grid">
+            <div class="review-card reveal">
+                <div class="review-header">
+                    <div class="reviewer-initial">S</div>
+                    <div>
+                        <h4>Sakshi Verma</h4>
+                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    </div>
+                </div>
+                <p class="review-text">"The powder blue Chanderi Sparkle kurti looks even dreamier in person! The embroidery is so neat and the packaging felt like opening a handwritten gift."</p>
+            </div>
+            <div class="review-card reveal">
+                <div class="review-header">
+                    <div class="reviewer-initial">A</div>
+                    <div>
+                        <h4>Ananya Kapoor</h4>
+                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    </div>
+                </div>
+                <p class="review-text">"Ordered the lime georgette Chikankari saree for my cousin's haldi. So lightweight, authentic handwork, and aunty helped me pick the exact shade on WhatsApp!"</p>
+            </div>
+            <div class="review-card reveal">
+                <div class="review-header">
+                    <div class="reviewer-initial">M</div>
+                    <div>
+                        <h4>Meera Nair</h4>
+                        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    </div>
+                </div>
+                <p class="review-text">"Finally found a homegrown brand for daily-wear Chikankari kurtas that don't shrink or lose their softness. Already eyeing two more pastels."</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= INSTAGRAM COMMUNITY ================= -->
+    <section class="ig-section" id="instagram-section">
+        <h2 class="section-title reveal" style="margin-top:0;">Live From @lucknowiweaves</h2>
+        <p class="section-subtitle">New drops, shoot days, LW Muses &amp; styling reels go up on Instagram first.</p>
+
+        <div class="ig-highlights reveal">
+            <a href="https://www.instagram.com/lucknowiweaves/" target="_blank" class="ig-circle">
+                <div class="ig-ring"><div class="ig-ring-inner"><i class="fas fa-heart"></i></div></div>
+                <span>Feedback</span>
+            </a>
+            <a href="https://www.instagram.com/lucknowiweaves/" target="_blank" class="ig-circle">
+                <div class="ig-ring"><div class="ig-ring-inner"><i class="fas fa-box-open"></i></div></div>
+                <span>Orders ✨</span>
+            </a>
+            <a href="https://www.instagram.com/lucknowiweaves/" target="_blank" class="ig-circle">
+                <div class="ig-ring"><div class="ig-ring-inner"><i class="fas fa-sparkles"></i></div></div>
+                <span>LW Muses</span>
+            </a>
+            <a href="https://www.instagram.com/lucknowiweaves/" target="_blank" class="ig-circle">
+                <div class="ig-ring"><div class="ig-ring-inner"><i class="fas fa-camera"></i></div></div>
+                <span>Shoot Days</span>
+            </a>
+        </div>
+
+        <a id="igFollowBtn" href="https://www.instagram.com/lucknowiweaves/" target="_blank" class="btn-instagram">
+            <i class="fab fa-instagram"></i> Follow @lucknowiweaves
+        </a>
+    </section>
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="site-footer">
+        <div class="footer-grid">
+            <div>
+                <div class="logo-lockup">
+                    <span class="hindi-brand" style="font-size:1.7rem; color:var(--gold);">लखनवी</span>
+                    <span class="script-brand" style="font-size:1.8rem; color:#FDF9F3;">weaves</span>
+                </div>
+                <span class="logo-sub" style="color:rgba(253,249,243,0.5);">The Chikankari Legacy</span>
+                <p class="footer-about">Mom-Owned • Homegrown • Handcrafted. Authentic Lucknowi Chikankari kurtas, sarees &amp; festive ensembles — woven in Lucknow for your wardrobe.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Explore</h4>
+                <ul>
+                    <li><a href="#catalog">Shop Catalog</a></li>
+                    <li><a href="#styleFinder">Style Finder</a></li>
+                    <li><a href="#our-story">Our Story</a></li>
+                    <li><a href="#lw-muses">LW Muses</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Connect With Us</h4>
+                <ul>
+                    <li><a id="footerWaLink" href="https://wa.me/919800000000" target="_blank"><i class="fab fa-whatsapp"></i> Order on WhatsApp</a></li>
+                    <li><a id="footerIgLink" href="https://www.instagram.com/lucknowiweaves/" target="_blank"><i class="fab fa-instagram"></i> @lucknowiweaves</a></li>
+                    <li><span><i class="fas fa-location-dot"></i> Handcrafted in Lucknow · Ships Pan-India</span></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>&copy; <span id="footerYear"></span> लखनवी Weaves. All rights reserved.</span>
+            <span>Handmade with love, just for you 🤍</span>
+            <button type="button" class="admin-fab" id="adminFab" onclick="handleAdminFabClick()">
+                <i class="fas fa-lock" id="adminFabIcon"></i> <span>Admin Studio</span>
+            </button>
+        </div>
+    </footer>
+
+    <!-- ================= FLOATING ACTION BAR ================= -->
+    <div class="floating-bar">
+        <a id="floatWaBtn" href="https://wa.me/919800000000" target="_blank" class="action-icon ic-wa" title="Order on WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        <a id="floatIgBtn" href="https://www.instagram.com/lucknowiweaves/" target="_blank" class="action-icon ic-ig" title="Instagram"><i class="fab fa-instagram"></i></a>
+        <button type="button" class="action-icon ic-chat" onclick="openHelperChat()" title="Ask Us Anything"><i class="fas fa-comments"></i></button>
+    </div>
+
+    <button type="button" class="wishlist-fab" onclick="openWishlistPanel()" title="My Wishlist">
+        <i class="fas fa-heart"></i>
+        <span class="wishlist-count" id="wishlistCount">0</span>
+    </button>
+
+    <button type="button" class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0, behavior:'smooth'})" title="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- ================= HELPER FAQ CHAT ================= -->
+    <div class="chat-overlay" id="helperChatOverlay" onclick="if(event.target.id==='helperChatOverlay') closeHelperChat()">
+        <div class="chat-panel">
+            <div class="chat-header">
+                <div>
+                    <strong style="display:block; font-size:0.92rem;">लखनवी Weaves Concierge</strong>
+                    <span style="font-size:0.72rem; opacity:0.75;">Quick answers on sizing, fabric &amp; shipping</span>
+                </div>
+                <button type="button" onclick="closeHelperChat()" style="background:none; border:none; color:#fff; cursor:pointer; font-size:1rem;"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="chat-body" id="helperChatBody"></div>
+        </div>
+    </div>
+
+    <!-- ================= WISHLIST DRAWER ================= -->
+    <div id="wishlistOverlay" class="wishlist-overlay" onclick="if(event.target.id==='wishlistOverlay') closeWishlistPanel()">
+        <div class="wishlist-panel">
+            <div class="wishlist-panel-header">
+                <h3 style="margin:0; font-size:1.25rem;"><i class="fas fa-heart" style="color:var(--primary); margin-right:8px;"></i>My Wishlist</h3>
+                <button type="button" class="modal-close" style="position:static;" onclick="closeWishlistPanel()"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="wishlist-items" id="wishlistItemsContainer"></div>
+            <div class="wishlist-panel-footer" id="wishlistPanelFooter">
+                <button type="button" class="buy-wa-btn" onclick="enquireWishlistWA()"><i class="fab fa-whatsapp"></i> Enquire on WhatsApp</button>
+                <button type="button" style="background:none; border:none; color:var(--text-muted); text-decoration:underline; cursor:pointer; font-size:0.82rem;" onclick="openWishlistCallbackForm()">Request a Callback Instead</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= WISHLIST CALLBACK MODAL (Reusable state) ================= -->
+    <div id="wishlistModal" class="modal-overlay" onclick="if(event.target.id==='wishlistModal') closeModal('wishlistModal')">
+        <div class="modal-box" style="text-align:center;">
+            <button type="button" class="modal-close" onclick="closeModal('wishlistModal')"><i class="fas fa-times"></i></button>
+            <div id="wlFormView">
+                <h3>Request a Callback</h3>
+                <p style="color:var(--text-muted); font-size:0.9rem; margin-bottom:18px;">Leave your number and we'll message you on WhatsApp with sizing &amp; availability for your wishlisted pieces.</p>
+                <form onsubmit="return submitWishlistCallback(event)" style="text-align:left;">
+                    <div class="admin-field">
+                    <label>Hero Background Image URL (optional — leave blank for Lucknowi Arch backdrop)</label>
+                    <input type="text" id="peHeroImageUrl" placeholder="Leave blank for the signature Lucknowi arch vibe, or paste a URL">
+                    <input type="file" id="peHeroImageFile" accept="image/*" style="margin-top:8px;" onchange="handleHeroFileSelect(event)">
+                    <small>Leave empty to keep the warm Lucknowi arch &amp; Chikankari jaali background, or upload your own photo anytime.</small>
+                </div>
+                    <div class="admin-field">
+                        <label>WhatsApp / Phone Number</label>
+                        <input type="tel" id="wlNumber" required placeholder="+91 98XXX XXXXX">
+                    </div>
+                    <button type="submit" class="admin-submit-btn" id="wlSubmitBtn">Send Request</button>
+                    <div class="admin-error" id="wlError"></div>
+                </form>
+            </div>
+            <div id="wlSuccessView" style="display:none; padding:12px 0;">
+                <div style="font-size:2.6rem; margin-bottom:10px;">✨</div>
+                <h3>Thank You!</h3>
+                <p id="wlSuccessMsg" style="color:var(--text-muted); margin-bottom:20px;"></p>
+                <button type="button" class="admin-submit-btn" onclick="closeModal('wishlistModal')">Back to Catalog</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= FABRIC CARE & SIZE GUIDE MODAL ================= -->
+    <div id="careModal" class="modal-overlay" onclick="if(event.target.id==='careModal') closeModal('careModal')">
+        <div class="modal-box">
+            <button type="button" class="modal-close" onclick="closeModal('careModal')"><i class="fas fa-times"></i></button>
+            <h3 id="careModalTitle">Fabric Care &amp; Size Guide</h3>
+            <div class="care-modal-body" id="careModalBody"></div>
+        </div>
+    </div>
+
+    <!-- ================= ADMIN: LOGIN MODAL ================= -->
+    <div id="adminLoginModal" class="modal-overlay" onclick="if(event.target.id==='adminLoginModal') closeModal('adminLoginModal')">
+        <div class="modal-box">
+            <button type="button" class="modal-close" onclick="closeModal('adminLoginModal')"><i class="fas fa-times"></i></button>
+            <h3>Admin Studio Login</h3>
+            <p style="text-align:center; font-size:0.84rem; color:var(--text-muted); margin-bottom:18px;">
+                Edit page text, hero banner, products, prices &amp; care guides directly on this page.
+            </p>
+            <form onsubmit="return adminLogin(event)">
+                <div class="admin-field">
+                    <label>Admin Password</label>
+                    <input type="password" id="adminPasswordInput" required placeholder="Enter password (demo: lucknowi)">
+                    <small>Demo password is <strong>lucknowi</strong>. You can change the SHA-256 hash in the file header anytime.</small>
+                </div>
+                <button type="submit" class="admin-submit-btn" id="adminLoginBtn">Unlock Admin Studio</button>
+                <div class="admin-error" id="adminLoginError">Incorrect password. Try again.</div>
+            </form>
+        </div>
+    </div>
+
+    <!-- ================= ADMIN: EDIT MAIN PAGE MODAL ================= -->
+    <div id="pageEditorModal" class="modal-overlay" onclick="if(event.target.id==='pageEditorModal') closeModal('pageEditorModal')">
+        <div class="modal-box wide">
+            <button type="button" class="modal-close" onclick="closeModal('pageEditorModal')"><i class="fas fa-times"></i></button>
+            <h3>Edit Main Page Content</h3>
+            <form onsubmit="return savePageSettings(event)">
+                <div class="admin-field-row">
+                    <div class="admin-field">
+                        <label>Header Subtitle</label>
+                        <input type="text" id="peHeaderSub" required>
+                    </div>
+                    <div class="admin-field">
+                        <label>Hero Greeting Pill</label>
+                        <input type="text" id="peHeroWelcome" required>
+                    </div>
+                </div>
+                <div class="admin-field-row">
+                    <div class="admin-field">
+                        <label>Hero Headline (Main)</label>
+                        <input type="text" id="peHeroTitleMain" required>
+                    </div>
+                    <div class="admin-field">
+                        <label>Hero Headline (Italic Accent)</label>
+                        <input type="text" id="peHeroTitleAccent" required>
+                    </div>
+                </div>
+                <div class="admin-field">
+                    <label>Hero Subtitle</label>
+                    <textarea id="peHeroSubtitle" rows="2" required></textarea>
+                </div>
+                <div class="admin-field">
+                    <label>Hero Background Image URL (or upload below)</label>
+                    <input type="text" id="peHeroImageUrl" placeholder="https://...">
+                    <input type="file" id="peHeroImageFile" accept="image/*" style="margin-top:8px;" onchange="handleHeroFileSelect(event)">
+                    <small>Upload a fresh banner photo or paste any image URL.</small>
+                </div>
+                <div class="admin-field">
+                    <label>Top Marquee Phrases (comma separated)</label>
+                    <input type="text" id="peMarquee" required>
+                </div>
+                <div class="admin-field">
+                    <label>Promo Banner Text</label>
+                    <input type="text" id="pePromoText" required>
+                </div>
+                <div class="admin-field-row">
+                    <div class="admin-field">
+                        <label>WhatsApp Number (with country code)</label>
+                        <input type="text" id="peWhatsapp" required placeholder="9198XXXXXXXX">
+                    </div>
+                    <div class="admin-field">
+                        <label>Instagram Username</label>
+                        <input type="text" id="peInstagram" required placeholder="lucknowiweaves">
+                    </div>
+                </div>
+                <div class="admin-field">
+                    <label>Our Story Heading</label>
+                    <input type="text" id="peStoryHeading" required>
+                </div>
+                <div class="admin-field">
+                    <label>Our Story Paragraph</label>
+                    <textarea id="peStoryBody" rows="3" required></textarea>
+                </div>
+                <button type="submit" class="admin-submit-btn" id="peSubmitBtn">Save Page Changes</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- ================= ADMIN: ADD / EDIT PRODUCT MODAL ================= -->
+    <div id="productFormModal" class="modal-overlay" onclick="if(event.target.id==='productFormModal') closeModal('productFormModal')">
+        <div class="modal-box wide">
+            <button type="button" class="modal-close" onclick="closeModal('productFormModal')"><i class="fas fa-times"></i></button>
+            <h3 id="productFormTitle">Add New Product</h3>
+            <form onsubmit="return saveProduct(event)">
+                <div class="admin-field">
+                    <label>Product Title</label>
+                    <input type="text" id="pfTitle" required placeholder="e.g. Chanderi Sparkle Chikankari Kurti">
+                </div>
+                <div class="admin-field">
+                    <label>Description</label>
+                    <textarea id="pfDesc" rows="2" placeholder="Fabric, embroidery stitch, length & styling note"></textarea>
+                </div>
+                <div class="admin-field">
+                    <label>Collection / Category</label>
+                    <select id="pfCategorySelect" required></select>
+                    <input type="text" id="pfCategoryCustom" placeholder="Type new collection name" style="display:none; margin-top:8px;">
+                </div>
+                <div class="admin-field-row">
+                    <div class="admin-field">
+                        <label>Price (₹)</label>
+                        <input type="number" id="pfPrice" required min="0">
+                    </div>
+                    <div class="admin-field">
+                        <label>Old Price (optional)</label>
+                        <input type="number" id="pfOldPrice" min="0">
+                    </div>
+                </div>
+                <div class="admin-field-row">
+                    <div class="admin-field">
+                        <label>Badge Text</label>
+                        <input type="text" id="pfBadge" placeholder="e.g. Pure Georgette, 6.5m Saree">
+                    </div>
+                    <div class="admin-field">
+                        <label>Stock Quantity</label>
+                        <input type="number" id="pfQty" min="0" value="8">
+                    </div>
+                </div>
+                <div class="admin-field">
+                    <label>Sizes / Options (comma separated)</label>
+                    <input type="text" id="pfVariants" placeholder="e.g. S (36), M (38), L (40), XL (42), XXL (44)">
+                </div>
+                <div class="admin-field">
+                    <label>Tags</label>
+                    <div class="tag-checkbox-group">
+                        <label class="tag-checkbox"><input type="checkbox" name="pfTag" value="Handcrafted"> 🪡 Handcrafted</label>
+                        <label class="tag-checkbox"><input type="checkbox" name="pfTag" value="Bestseller"> ✨ Bestseller</label>
+                        <label class="tag-checkbox"><input type="checkbox" name="pfTag" value="Festive Edit"> 🪔 Festive Edit</label>
+                        <label class="tag-checkbox"><input type="checkbox" name="pfTag" value="Limited Piece"> ⏳ Limited Piece</label>
+                    </div>
+                </div>
+                <div class="admin-field">
+                    <label>Product Photos</label>
+                    <div class="admin-img-list" id="pfImageList"></div>
+                    <input type="file" id="pfImageUpload" accept="image/*" multiple>
+                    <input type="text" id="pfImageUrlAdd" placeholder="Or paste an image URL and press Enter" style="margin-top:8px;">
+                    <small>First photo is the cover image. Photos are compressed automatically.</small>
+                </div>
+                <button type="submit" class="admin-submit-btn" id="pfSubmitBtn">Save Product</button>
+                <div class="admin-error" id="pfError"></div>
+            </form>
+        </div>
+    </div>
+
+    <!-- ================= ADMIN: CARE GUIDE MANAGER ================= -->
+    <div id="careGuideManagerModal" class="modal-overlay" onclick="if(event.target.id==='careGuideManagerModal') closeModal('careGuideManagerModal')">
+        <div class="modal-box wide">
+            <button type="button" class="modal-close" onclick="closeModal('careGuideManagerModal')"><i class="fas fa-times"></i></button>
+            <h3>Care &amp; Size Guides</h3>
+            <button type="button" class="admin-submit-btn" style="margin-bottom:16px;" onclick="openCareGuideForm()"><i class="fas fa-plus"></i> Add New Guide</button>
+            <div id="careGuideList"></div>
+        </div>
+    </div>
+
+    <div id="careGuideFormModal" class="modal-overlay" onclick="if(event.target.id==='careGuideFormModal') closeModal('careGuideFormModal')">
+        <div class="modal-box wide">
+            <button type="button" class="modal-close" onclick="closeModal('careGuideFormModal')"><i class="fas fa-times"></i></button>
+            <h3 id="cgFormTitle">Edit Care Guide</h3>
+            <form onsubmit="return saveCareGuide(event)">
+                <div class="admin-field">
+                    <label>Collection / Key</label>
+                    <input type="text" id="cgKey" required placeholder="e.g. Chanderi Edit or default">
+                </div>
+                <div class="admin-field">
+                    <label>Guide Title</label>
+                    <input type="text" id="cgTitle" required placeholder="e.g. Chanderi Chikankari Care">
+                </div>
+                <div class="admin-field">
+                    <label>Care Instructions (one per line)</label>
+                    <textarea id="cgCare" rows="4" required></textarea>
+                </div>
+                <div class="admin-field">
+                    <label>Sizing / Drape Notes (one per line)</label>
+                    <textarea id="cgSize" rows="4" required></textarea>
+                </div>
+                <button type="submit" class="admin-submit-btn">Save Guide</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- ================= ADMIN: GITHUB CMS SYNC MODAL ================= -->
+    <div id="githubSyncModal" class="modal-overlay" onclick="if(event.target.id==='githubSyncModal') closeModal('githubSyncModal')">
+        <div class="modal-box">
+            <button type="button" class="modal-close" onclick="closeModal('githubSyncModal')"><i class="fas fa-times"></i></button>
+            <h3>GitHub Live Sync</h3>
+            <p style="font-size:0.84rem; color:var(--text-muted); margin-bottom:16px;">
+                All edits save instantly in your browser. Add your GitHub repo &amp; Personal Access Token (saved only in this browser) to publish changes live to GitHub Pages.
+            </p>
+            <form onsubmit="return saveGithubSettings(event)">
+                <div class="admin-field">
+                    <label>GitHub Username</label>
+                    <input type="text" id="ghOwnerInput" required>
+                </div>
+                <div class="admin-field">
+                    <label>Repository Name</label>
+                    <input type="text" id="ghRepoInput" required>
+                </div>
+                <div class="admin-field">
+                    <label>Branch</label>
+                    <input type="text" id="ghBranchInput" required value="main">
+                </div>
+                <div class="admin-field">
+                    <label>Personal Access Token (Contents: Read &amp; Write)</label>
+                    <input type="password" id="ghTokenInput" placeholder="ghp_...">
+                </div>
+                <button type="submit" class="admin-submit-btn">Save Sync Settings</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- ================= CUSTOM CONFIRM MODAL (No native confirm()) ================= -->
+    <div id="confirmModal" class="modal-overlay">
+        <div class="modal-box" style="max-width:400px;">
+            <h3 id="confirmTitle" style="text-align:left; font-size:1.25rem; margin-bottom:10px;">Please Confirm</h3>
+            <p id="confirmMessage" style="font-size:0.9rem; color:var(--text-muted);"></p>
+            <div class="confirm-actions">
+                <button type="button" class="btn-cancel" id="confirmCancelBtn">Cancel</button>
+                <button type="button" class="btn-danger" id="confirmOkBtn">Confirm</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ================= DEFAULT BRAND DATA FOR लखनवी WEAVES =================
+        const DEFAULT_SITE_CONFIG = {
+            headerSubtext: "The Chikankari Legacy",
+            heroWelcome: "Aadaab ✨ — Mom-Owned • Homegrown • Handcrafted",
+            heroTitleMain: "Woven in Lucknow for",
+            heroTitleAccent: "Your Wardrobe",
+            heroSubtitle: "Authentic hand-embroidered Chikankari kurtas, breezy georgette sarees & Chanderi sparkle sets — crafted with timeless grace for daily classics and festive statements.",
+            heroImage: "",
+            marqueeItems: [
+                "Mom-Owned • Homegrown • Handcrafted",
+                "Woven in Lucknow for Your Wardrobe",
+                "Daily Classics & Festive Statements",
+                "Authentic Hand-Embroidered Chikankari",
+                "Handmade With Love • Just For You"
+            ],
+            promoText: "Handmade With Love, Just For You — Complimentary styling & pan-India shipping on festive orders",
+            whatsapp: "919800000000",
+            instagram: "lucknowiweaves",
+            storyHeading: "Mom-Owned, Homegrown & Stitched With Soul",
+            storyBody: "Born from a deep love for Lucknow's centuries-old needlecraft, लखनवी weaves brings authentic hand-embroidered Chikankari directly from master artisans to your wardrobe. Every piece is thoughtfully handpicked for fabric softness, delicate shadow-work, and effortless drape.",
+            underConstruction: false
+        };
+
+        const DEFAULT_PRODUCTS = [
+            {
+                id: "lw_chanderi_blue",
+                title: "Chanderi Sparkle Chikankari Kurti",
+                description: "Powder-blue Chanderi silk-blend kurti adorned with delicate white resham Chikankari and subtle mukesh sparkle. Effortless for day festivities.",
+                category: "Chanderi Edit",
+                price: 2199,
+                oldPrice: 2799,
+                badge: "Chanderi Silk",
+                qty: 6,
+                variants: ["S (36)", "M (38)", "L (40)", "XL (42)", "XXL (44)"],
+                tags: ["Handcrafted", "Bestseller"],
+                images: [
+                    "https://images.unsplash.com/photo-1583391733956-6c78276477e2?auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=800&q=80"
+                ],
+                visible: true,
+                soldOut: false,
+                createdAt: 1
+            },
+            {
+                id: "lw_ivory_kurta",
+                title: "Noor Ivory Pure Chikankari Kurta",
+                description: "A timeless white-on-white Lucknowi classic with intricate bakhiya and phanda stitches. Breathable all-day elegance that pairs with any bottom.",
+                category: "Daily Classics",
+                price: 1499,
+                oldPrice: 1899,
+                badge: "Pure Cotton",
+                qty: 12,
+                variants: ["S (36)", "M (38)", "L (40)", "XL (42)", "With Cotton Inner (+₹250)"],
+                tags: ["Handcrafted", "Bestseller"],
+                images: [
+                    "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?auto=format&fit=crop&w=800&q=80"
+                ],
+                visible: true,
+                soldOut: false,
+                createdAt: 2
+            },
+            {
+                id: "lw_georgette_saree",
+                title: "Pista Georgette Chikankari Saree",
+                description: "Feather-light 6.5 metre pure viscose georgette saree with all-over floral jaal hand embroidery and matching unstitched blouse piece.",
+                category: "Chikankari Sarees",
+                price: 3899,
+                oldPrice: 4600,
+                badge: "6.5m With Blouse",
+                qty: 4,
+                variants: ["6.5 Metre + Unstitched Blouse", "Add Fall & Pico (+₹200)"],
+                tags: ["Handcrafted", "Festive Edit", "Limited Piece"],
+                images: [
+                    "https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1583391733956-6c78276477e2?auto=format&fit=crop&w=800&q=80"
+                ],
+                visible: true,
+                soldOut: false,
+                createdAt: 3
+            },
+            {
+                id: "lw_pastel_collection",
+                title: "Rang-e-Lucknow Pastel Modal Kurti",
+                description: "Ultra-soft modal cotton kurtis in mint, lemon, tangerine, sky blue & deep plum — hand-finished with tone-on-tone and white chikan motifs.",
+                category: "Daily Classics",
+                price: 1299,
+                oldPrice: 1599,
+                badge: "5 Pastel Shades",
+                qty: 15,
+                variants: ["Mint Green (M/L)", "Lemon Yellow (M/L)", "Sky Blue (S/M/L)", "Plum Wine (L/XL)"],
+                tags: ["Handcrafted"],
+                images: [
+                    "https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?auto=format&fit=crop&w=800&q=80"
+                ],
+                visible: true,
+                soldOut: false,
+                createdAt: 4
+            },
+            {
+                id: "lw_festive_anarkali",
+                title: "Begum Crimson Festive Chikankari Set",
+                description: "Rich festive statement kurta crafted with dense Lucknowi needlework and subtle zari highlights — designed for pujas, mehendi & family dinners.",
+                category: "Festive Statements",
+                price: 3299,
+                oldPrice: 3999,
+                badge: "Festive Luxe",
+                qty: 3,
+                variants: ["S (36)", "M (38)", "L (40)", "XL (42)"],
+                tags: ["Festive Edit", "Limited Piece"],
+                images: [
+                    "https://images.unsplash.com/photo-1583391733956-6c78276477e2?auto=format&fit=crop&w=800&q=80"
+                ],
+                visible: true,
+                soldOut: false,
+                createdAt: 5
+            }
+        ];
+
+        const DEFAULT_CARE_GUIDES = {
+            "chanderi edit": {
+                title: "Chanderi Chikankari Care & Sizing",
+                care: [
+                    "Dry clean recommended to preserve Chanderi sheen and mukesh sparkle",
+                    "Steam iron on reverse side at low temperature",
+                    "Store folded in a breathable muslin cloth"
+                ],
+                size: [
+                    "S: Bust 36\" | M: Bust 38\" | L: Bust 40\" | XL: Bust 42\" | XXL: Bust 44\"",
+                    "Standard kurti length: 44–46 inches",
+                    "Message us on WhatsApp for custom garment measurements"
+                ]
+            },
+            "chikankari sarees": {
+                title: "Georgette Saree Care & Drape Guide",
+                care: [
+                    "Dry clean only for first 2 washes to keep hand-embroidery crisp",
+                    "Do not wring or brush over delicate resham work",
+                    "Dry in shade away from direct harsh sunlight"
+                ],
+                size: [
+                    "Total length: 6.5 metres (includes 0.85m matching unstitched blouse)",
+                    "Lightweight, fluid fall suitable for both day & evening events"
+                ]
+            },
+            "daily classics": {
+                title: "Cotton & Modal Chikankari Care",
+                care: [
+                    "Gentle hand wash separately in cold water using mild liquid detergent",
+                    "Do not soak dark shades for more than 10 minutes",
+                    "Dry in shade and iron lightly while damp"
+                ],
+                size: [
+                    "Relaxed straight-cut Lucknowi silhouette",
+                    "If you are between sizes, we recommend sizing up for breezy comfort"
+                ]
+            },
+            "default": {
+                title: "Handcrafted Chikankari Care Guide",
+                care: [
+                    "Gentle hand wash cold or dry clean for festive/georgette pieces",
+                    "Avoid bleach and harsh wringing to protect hand-stitched motifs",
+                    "Iron on reverse side on low-medium heat"
+                ],
+                size: [
+                    "Available in S (36) to XXL (44) — check dropdown on each piece",
+                    "Reach out on WhatsApp for exact bust, hip & length details"
+                ]
+            }
+        };
+
+        // ================= STATE & STORAGE HELPERS =================
+        const STORAGE_KEYS = {
+            site: "lw_site_config_v1",
+            products: "lw_products_v1",
+            care: "lw_care_guides_v1",
+            wishlist: "lw_wishlist_v1",
+            admin: "lw_is_admin",
+            gh: "lw_github_cfg"
+        };
+
+        let siteConfig = loadLocal(STORAGE_KEYS.site, DEFAULT_SITE_CONFIG);
+        // Clear the old default model photo if it was cached in localStorage so the new Lucknowi backdrop appears immediately
+        if (siteConfig.heroImage && siteConfig.heroImage.includes("photo-1610030469983-98e550d6193c")) {
+            siteConfig.heroImage = "";
+            saveLocal(STORAGE_KEYS.site, siteConfig);
+        }
+        let currentProducts = loadLocal(STORAGE_KEYS.products, DEFAULT_PRODUCTS);
+        let careGuides = loadLocal(STORAGE_KEYS.care, DEFAULT_CARE_GUIDES);
+        let wishlist = loadLocal(STORAGE_KEYS.wishlist, []);
+        let isAdmin = localStorage.getItem(STORAGE_KEYS.admin) === "1";
+
+        function loadLocal(key, fallback) {
+            try {
+                const raw = localStorage.getItem(key);
+                return raw ? JSON.parse(raw) : structuredClone(fallback);
+            } catch (e) {
+                return structuredClone(fallback);
+            }
+        }
+        function saveLocal(key, value) {
+            try { localStorage.setItem(key, JSON.stringify(value)); } catch (e) {}
+        }
+
+        function escapeHtml(str) {
+            return String(str == null ? "" : str).replace(/[&<>"']/g, c => ({
+                "&": "&amp;", "<": "&lt;", ">": "&gt;", "\"": "&quot;", "'": "&#39;"
+            }[c]));
+        }
+        function escapeJsString(str) {
+            return String(str == null ? "" : str).replace(/\\/g, "\\\\").replace(/'/g, "\\'").replace(/"/g, "&quot;");
+        }
+        function normalizeKey(str) { return String(str || "").trim().toLowerCase(); }
+        function generateId() { return "lw_" + Date.now().toString(36) + Math.random().toString(36).slice(2, 7); }
+
+        // ================= TOASTS, CONFIRM MODAL & MICRO-EFFECTS =================
+        function showToast(message, icon = "fa-check-circle") {
+            const container = document.getElementById("toastContainer");
+            const el = document.createElement("div");
+            el.className = "toast";
+            el.innerHTML = `<i class="fas ${icon}"></i><span>${escapeHtml(message)}</span>`;
+            container.appendChild(el);
+            setTimeout(() => el.remove(), 2800);
+        }
+
+        function showConfirm(title, message) {
+            return new Promise(resolve => {
+                const modal = document.getElementById("confirmModal");
+                document.getElementById("confirmTitle").textContent = title;
+                document.getElementById("confirmMessage").textContent = message;
+                modal.classList.add("active");
+
+                const okBtn = document.getElementById("confirmOkBtn");
+                const cancelBtn = document.getElementById("confirmCancelBtn");
+                const cleanup = (val) => {
+                    modal.classList.remove("active");
+                    okBtn.onclick = null;
+                    cancelBtn.onclick = null;
+                    resolve(val);
+                };
+                okBtn.onclick = () => cleanup(true);
+                cancelBtn.onclick = () => cleanup(false);
+            });
+        }
+
+        function fireHeartBurst(originEl) {
+            const rect = originEl.getBoundingClientRect();
+            for (let i = 0; i < 6; i++) {
+                const heart = document.createElement("i");
+                heart.className = "fas fa-heart heart-burst-piece";
+                heart.style.left = (rect.left + rect.width / 2) + "px";
+                heart.style.top = (rect.top + rect.height / 2) + "px";
+                heart.style.setProperty("--dx", (Math.random() * 76 - 38) + "px");
+                heart.style.fontSize = (0.75 + Math.random() * 0.55) + "rem";
+                document.body.appendChild(heart);
+                setTimeout(() => heart.remove(), 1050);
+            }
+        }
+
+        function fireConfettiAt(originEl) {
+            const rect = originEl.getBoundingClientRect();
+            const colors = ["#A64B2A", "#C9973E", "#25D366", "#2B1B17"];
+            for (let i = 0; i < 14; i++) {
+                const el = document.createElement("div");
+                el.className = "confetti-piece-fixed";
+                el.style.background = colors[i % colors.length];
+                el.style.left = (rect.left + rect.width / 2) + "px";
+                el.style.top = (rect.top + rect.height / 2) + "px";
+                const angle = (Math.PI * 2 * i) / 14;
+                const dist = 46 + Math.random() * 38;
+                el.style.setProperty("--tx", Math.cos(angle) * dist + "px");
+                el.style.setProperty("--ty", Math.sin(angle) * dist + "px");
+                document.body.appendChild(el);
+                setTimeout(() => el.remove(), 900);
+            }
+        }
+
+        // ================= APPLY EDITABLE MAIN PAGE CONFIG =================
+        function applySiteConfig() {
+            document.getElementById("headerSubtext").textContent = siteConfig.headerSubtext;
+            document.getElementById("heroWelcome").textContent = siteConfig.heroWelcome;
+            document.getElementById("heroTitle").innerHTML =
+                `${escapeHtml(siteConfig.heroTitleMain)} <span>${escapeHtml(siteConfig.heroTitleAccent)}</span>`;
+            document.getElementById("heroSubtitle").textContent = siteConfig.heroSubtitle;
+
+            const hero = document.getElementById("heroSection");
+            if (siteConfig.heroImage && siteConfig.heroImage.trim()) {
+                hero.classList.add("has-custom-bg");
+                hero.style.backgroundImage =
+                    `linear-gradient(rgba(253, 249, 243, 0.72), rgba(253, 249, 243, 0.94)), url('${siteConfig.heroImage}')`;
+            } else {
+                hero.classList.remove("has-custom-bg");
+                hero.style.backgroundImage = "";
+            }
+
+            // Marquee (duplicated twice for seamless infinite scroll)
+            const items = (siteConfig.marqueeItems && siteConfig.marqueeItems.length)
+                ? siteConfig.marqueeItems : DEFAULT_SITE_CONFIG.marqueeItems;
+            const spans = items.map((txt, idx) =>
+                `<span class="${idx % 2 === 0 ? 'highlight' : ''}">${escapeHtml(txt)}</span>`
+            ).join("");
+            document.getElementById("marqueeTrack").innerHTML = spans + spans;
+
+            document.getElementById("promoBannerText").textContent = siteConfig.promoText;
+            document.getElementById("storyHeading").textContent = siteConfig.storyHeading;
+            document.getElementById("storyBody").textContent = siteConfig.storyBody;
+
+            const waNum = (siteConfig.whatsapp || "919800000000").replace(/[^\d]/g, "");
+            const waUrl = `https://wa.me/${waNum}?text=${encodeURIComponent("Aadaab लखनवी weaves ✨! I'd love to explore your Chikankari collection.")}`;
+            const igHandle = (siteConfig.instagram || "lucknowiweaves").replace(/^@/, "");
+            const igUrl = `https://www.instagram.com/${igHandle}/`;
+
+            ["headerWaBtn", "heroWaBtn", "footerWaLink", "floatWaBtn", "maintWaBtn"].forEach(id => {
+                const el = document.getElementById(id);
+                if (el) el.href = waUrl;
+            });
+            ["igFollowBtn", "footerIgLink", "floatIgBtn", "maintIgBtn"].forEach(id => {
+                const el = document.getElementById(id);
+                if (el) el.href = igUrl;
+            });
+
+            // Maintenance mode state
+            const overlay = document.getElementById("constructionOverlay");
+            const adminBanner = document.getElementById("constructionAdminBanner");
+            if (siteConfig.underConstruction && !isAdmin) {
+                overlay.classList.add("active");
+                document.body.style.overflow = "hidden";
+            } else {
+                overlay.classList.remove("active");
+                document.body.style.overflow = "";
+            }
+            adminBanner.style.display = (siteConfig.underConstruction && isAdmin) ? "flex" : "none";
+        }
+
+        // ================= GITHUB LIVE SYNC (Optional) =================
+        function getGithubConfig() {
+            return loadLocal(STORAGE_KEYS.gh, { ...DEFAULT_GITHUB_CONFIG, token: "" });
+        }
+
+        function utf8ToBase64(str) {
+            const bytes = new TextEncoder().encode(str);
+            let binary = "";
+            bytes.forEach(b => binary += String.fromCharCode(b));
+            return btoa(binary);
+        }
+
+        async function syncJsonToGithub(path, data, message) {
+            const cfg = getGithubConfig();
+            if (!cfg.token || !cfg.owner || cfg.owner === "YOUR_GITHUB_USERNAME") return false;
+            const apiUrl = `https://api.github.com/repos/${cfg.owner}/${cfg.repo}/contents/${path}`;
+            let sha = null;
+            const getRes = await fetch(`${apiUrl}?ref=${cfg.branch}&_=${Date.now()}`, {
+                headers: { Authorization: `token ${cfg.token}` },
+                cache: "no-store"
+            });
+            if (getRes.ok) {
+                const existing = await getRes.json();
+                sha = existing.sha;
+            }
+            const body = { message, content: utf8ToBase64(JSON.stringify(data, null, 2)), branch: cfg.branch };
+            if (sha) body.sha = sha;
+            const putRes = await fetch(apiUrl, {
+                method: "PUT",
+                headers: { Authorization: `token ${cfg.token}`, "Content-Type": "application/json" },
+                body: JSON.stringify(body)
+            });
+            if (!putRes.ok) throw new Error("GitHub sync failed (HTTP " + putRes.status + ")");
+            return true;
+        }
+
+        async function fetchRemoteGithubData() {
+            const cfg = getGithubConfig();
+            if (!cfg.owner || cfg.owner === "YOUR_GITHUB_USERNAME") return;
+            const base = `https://raw.githubusercontent.com/${cfg.owner}/${cfg.repo}/${cfg.branch}`;
+            try {
+                const [sRes, pRes, cRes] = await Promise.all([
+                    fetch(`${base}/data/site-config.json?t=${Date.now()}`),
+                    fetch(`${base}/data/products.json?t=${Date.now()}`),
+                    fetch(`${base}/data/careguides.json?t=${Date.now()}`)
+                ]);
+                if (sRes.ok) { siteConfig = { ...DEFAULT_SITE_CONFIG, ...(await sRes.json()) }; saveLocal(STORAGE_KEYS.site, siteConfig); }
+                if (pRes.ok) { currentProducts = await pRes.json(); saveLocal(STORAGE_KEYS.products, currentProducts); }
+                if (cRes.ok) { careGuides = await cRes.json(); saveLocal(STORAGE_KEYS.care, careGuides); }
+            } catch (e) {
+                // Gracefully fall back to local data
+            }
+        }
+
+        // ================= CATALOG RENDERING & FILTERS =================
+        function getVisibleProducts() {
+            return isAdmin ? currentProducts : currentProducts.filter(p => p.visible !== false);
+        }
+
+        function renderFilterTabs() {
+            const tabsWrap = document.getElementById("filterTabs");
+            const prevActive = tabsWrap.querySelector(".filter-btn.active");
+            const prevFilter = prevActive ? prevActive.getAttribute("data-filter") : "all";
+            const cats = [...new Set(getVisibleProducts().map(p => p.category).filter(Boolean))];
+            const stillExists = cats.includes(prevFilter);
+
+            let html = `<button type="button" class="filter-btn${(prevFilter === "all" || !stillExists) ? " active" : ""}" data-filter="all">All Pieces</button>`;
+            cats.forEach(cat => {
+                const delBtn = isAdmin
+                    ? `<button type="button" class="tab-delete-btn" onclick="deleteCollection('${escapeJsString(cat)}')" title="Delete collection"><i class="fas fa-trash"></i></button>`
+                    : "";
+                html += `<span class="filter-tab-group"><button type="button" class="filter-btn${(stillExists && prevFilter === cat) ? " active" : ""}" data-filter="${escapeHtml(cat)}">${escapeHtml(cat)}</button>${delBtn}</span>`;
+            });
+            tabsWrap.innerHTML = html;
+            tabsWrap.querySelectorAll(".filter-btn").forEach(btn => {
+                btn.addEventListener("click", () => {
+                    tabsWrap.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
+                    btn.classList.add("active");
+                    applyFilters();
+                });
+            });
+        }
+
+        function buildCardHTML(p) {
+            const images = (p.images && p.images.length)
+                ? p.images
+                : ["https://images.unsplash.com/photo-1583391733956-6c78276477e2?auto=format&fit=crop&w=800&q=80"];
+            const imgTags = images.map((src, i) =>
+                `<img src="${escapeHtml(src)}" alt="${escapeHtml(p.title)} photo ${i + 1}" loading="lazy">`
+            ).join("");
+            const dots = images.map((_, i) => `<span class="dot${i === 0 ? " active" : ""}"></span>`).join("");
+            const sliderNav = images.length > 1 ? `
+                <button type="button" class="slider-btn prev-btn" onclick="slideImg(this, -1)" aria-label="Previous photo"><i class="fas fa-chevron-left"></i></button>
+                <button type="button" class="slider-btn next-btn" onclick="slideImg(this, 1)" aria-label="Next photo"><i class="fas fa-chevron-right"></i></button>
+                <div class="slider-dots">${dots}</div>` : "";
+
+            const badgeHtml = p.badge ? `<span class="badge"><i class="fas fa-feather-pointed"></i> ${escapeHtml(p.badge)}</span>` : "";
+            const isSoldOut = !!p.soldOut || (p.qty !== undefined && p.qty !== null && p.qty <= 0);
+            const isHidden = p.visible === false;
+            const oldPriceHtml = (p.oldPrice && p.oldPrice > p.price)
+                ? `<span class="old-price">₹${Number(p.oldPrice).toLocaleString("en-IN")}</span>` : "";
+            const lowStockHtml = (!isSoldOut && p.qty > 0 && p.qty <= 4)
+                ? `<span class="low-stock-chip">Only ${p.qty} left</span>` : "";
+
+            const TAG_META = {
+                "Handcrafted": { icon: "fa-hands-holding-heart", cls: "tag-handcrafted" },
+                "Bestseller": { icon: "fa-sparkles", cls: "tag-bestseller" },
+                "Festive Edit": { icon: "fa-star", cls: "tag-festive" },
+                "Limited Piece": { icon: "fa-hourglass-half", cls: "tag-limited" }
+            };
+            const soldOutChip = isSoldOut ? `<span class="product-tag tag-soldout"><i class="fas fa-clock"></i> Sold Out</span>` : "";
+            const tagChips = (p.tags || []).map(t => {
+                const m = TAG_META[t] || { icon: "fa-tag", cls: "tag-handcrafted" };
+                return `<span class="product-tag ${m.cls}"><i class="fas ${m.icon}"></i> ${escapeHtml(t)}</span>`;
+            }).join("");
+            const tagsHtml = (soldOutChip || tagChips) ? `<div class="product-tags">${soldOutChip}${tagChips}</div>` : "";
+
+            const variants = (p.variants && p.variants.length) ? p.variants : ["Standard"];
+            const variantOptions = variants.map(v => `<option value="${escapeHtml(v)}">${escapeHtml(v)}</option>`).join("");
+            const maxQty = Math.max(1, Math.min(10, p.qty || 10));
+
+            const hiddenRibbon = (isAdmin && isHidden) ? `<div class="hidden-ribbon">HIDDEN FROM VISITORS</div>` : "";
+            const adminControls = isAdmin ? `
+                <div class="card-admin-controls">
+                    <button type="button" class="card-kebab-btn" onclick="toggleCardMenu(event, '${p.id}')" title="Manage Product"><i class="fas fa-ellipsis-vertical"></i></button>
+                    <div class="card-admin-menu" id="menu-${p.id}">
+                        <button type="button" onclick="closeAllCardMenus(); openProductForm('${p.id}')"><i class="fas fa-pen"></i> Edit Product</button>
+                        <button type="button" onclick="closeAllCardMenus(); duplicateProduct('${p.id}')"><i class="fas fa-clone"></i> Duplicate</button>
+                        <button type="button" onclick="closeAllCardMenus(); toggleProductVisibility('${p.id}')"><i class="fas fa-eye${isHidden ? "" : "-slash"}"></i> ${isHidden ? "Show" : "Hide"}</button>
+                        <button type="button" onclick="closeAllCardMenus(); toggleSoldOut('${p.id}')"><i class="fas fa-box"></i> ${isSoldOut ? "Mark Available" : "Mark Sold Out"}</button>
+                        <button type="button" class="danger" onclick="closeAllCardMenus(); deleteProduct('${p.id}')"><i class="fas fa-trash"></i> Delete</button>
+                    </div>
+                </div>` : "";
+
+            return `
+            <article class="life-card${isAdmin && isHidden ? " life-card-hidden-admin" : ""}" data-id="${p.id}" data-category="${escapeHtml(p.category)}" data-price="${p.price || 0}">
+                ${hiddenRibbon}
+                ${badgeHtml}
+                <div class="image-slider" data-index="0">
+                    ${sliderNav}
+                    <div class="slider-track">${imgTags}</div>
+                    ${adminControls}
+                </div>
+                <div class="card-body">
+                    ${tagsHtml}
+                    <h3 class="prod-name" data-name="${escapeHtml(p.title)}">${escapeHtml(p.title)}</h3>
+                    <p class="prod-desc">${escapeHtml(p.description || "Hand-embroidered Lucknowi Chikankari piece crafted with love.")}</p>
+                    <div class="price-box">
+                        <span class="price">₹${Number(p.price || 0).toLocaleString("en-IN")}</span>
+                        ${oldPriceHtml}
+                        ${lowStockHtml}
+                    </div>
+                    <div class="options-row">
+                        <select class="variant-select" aria-label="Select size or option">${variantOptions}</select>
+                        <input type="number" class="qty-input" value="1" min="1" max="${maxQty}" ${isSoldOut ? "disabled" : ""} aria-label="Quantity">
+                    </div>
+                    <div class="card-actions">
+                        <button type="button" class="buy-wa-btn ${isSoldOut ? "restock-btn" : ""}" onclick="orderWA(this)">
+                            <i class="fab fa-whatsapp"></i> ${isSoldOut ? "Ask Restock" : "Reserve"}
+                        </button>
+                        <button type="button" class="share-btn wishlist-btn${wishlist.includes(p.id) ? " active" : ""}" onclick="toggleWishlist('${p.id}', this)" title="Save to Wishlist">
+                            <i class="fas fa-heart"></i>
+                        </button>
+                        <button type="button" class="share-btn" onclick="shareProduct(this)" title="Share">
+                            <i class="fas fa-share-nodes"></i>
+                        </button>
+                    </div>
+                </div>
+                <button type="button" class="info-icon-btn" title="Fabric Care & Size Guide" onclick="openCareModal(this.closest('.life-card'))">
+                    <i class="fas fa-info"></i>
+                </button>
+            </article>`;
+        }
+
+        function renderProducts() {
+            document.getElementById("productGrid").innerHTML = getVisibleProducts().map(buildCardHTML).join("");
+            applyFilters();
+        }
+
+        function applyFilters() {
+            const activeBtn = document.querySelector("#filterTabs .filter-btn.active");
+            const activeCategory = activeBtn ? activeBtn.getAttribute("data-filter") : "all";
+            const priceRange = document.getElementById("priceFilter").value;
+            const searchTerm = document.getElementById("searchInput").value.trim().toLowerCase();
+            document.getElementById("searchClear").style.display = searchTerm ? "block" : "none";
+
+            let visibleCount = 0;
+            document.querySelectorAll("#productGrid .life-card").forEach(card => {
+                const cat = card.getAttribute("data-category");
+                const price = parseInt(card.getAttribute("data-price"), 10) || 0;
+
+                const matchCat = (activeCategory === "all" || cat === activeCategory);
+                let matchPrice = true;
+                if (priceRange === "under1500") matchPrice = price < 1500;
+                else if (priceRange === "mid") matchPrice = price >= 1500 && price <= 3000;
+                else if (priceRange === "premium") matchPrice = price > 3000;
+
+                let matchSearch = true;
+                if (searchTerm) {
+                    const text = (
+                        (card.querySelector(".prod-name")?.textContent || "") + " " +
+                        (card.querySelector(".prod-desc")?.textContent || "") + " " +
+                        (card.querySelector(".badge")?.textContent || "") + " " +
+                        (cat || "")
+                    ).toLowerCase();
+                    matchSearch = text.includes(searchTerm);
+                }
+
+                if (matchCat && matchPrice && matchSearch) {
+                    card.style.display = "flex";
+                    visibleCount++;
+                } else {
+                    card.style.display = "none";
+                }
+            });
+            document.getElementById("noResults").style.display = visibleCount === 0 ? "block" : "none";
+        }
+
+        function clearSearch() {
+            document.getElementById("searchInput").value = "";
+            applyFilters();
+        }
+
+        function slideImg(btn, dir) {
+            const slider = btn.closest(".image-slider");
+            const track = slider.querySelector(".slider-track");
+            const imgs = track.querySelectorAll("img");
+            const dots = slider.querySelectorAll(".dot");
+            let idx = parseInt(slider.getAttribute("data-index") || "0", 10) + dir;
+            if (idx < 0) idx = imgs.length - 1;
+            if (idx >= imgs.length) idx = 0;
+            slider.setAttribute("data-index", idx);
+            track.scrollTo({ left: imgs[idx].offsetLeft, behavior: "smooth" });
+            dots.forEach((d, i) => d.classList.toggle("active", i === idx));
+        }
+
+        document.addEventListener("scroll", (e) => {
+            const track = e.target;
+            if (!track.classList || !track.classList.contains("slider-track")) return;
+            const slider = track.closest(".image-slider");
+            if (!slider || !track.clientWidth) return;
+            const imgs = track.querySelectorAll("img");
+            const dots = slider.querySelectorAll(".dot");
+            const idx = Math.max(0, Math.min(imgs.length - 1, Math.round(track.scrollLeft / track.clientWidth)));
+            slider.setAttribute("data-index", idx);
+            dots.forEach((d, i) => d.classList.toggle("active", i === idx));
+        }, true);
+
+        // ================= WHATSAPP ORDER & SHARE =================
+        function orderWA(btn) {
+            const card = btn.closest(".life-card");
+            const name = card.querySelector(".prod-name").getAttribute("data-name");
+            const cat = card.getAttribute("data-category");
+            const price = card.getAttribute("data-price");
+            const select = card.querySelector(".variant-select");
+            const variant = select.options[select.selectedIndex].text;
+            const qty = card.querySelector(".qty-input").value;
+            const photoNo = parseInt(card.querySelector(".image-slider")?.getAttribute("data-index") || "0", 10) + 1;
+            const waNum = (siteConfig.whatsapp || "919800000000").replace(/[^\d]/g, "");
+
+            const msg = btn.classList.contains("restock-btn")
+                ? `Aadaab लखनवी weaves ✨,\n\nI'd love to know when *${name}* (${cat}) is back in stock!\n*Size/Option:* ${variant}`
+                : `Aadaab लखनवी weaves ✨,\n\nI would like to reserve:\n\n*Piece:* ${name}\n*Collection:* ${cat}\n*Price:* ₹${Number(price).toLocaleString("en-IN")}\n*Photo No.:* ${photoNo}\n*Size / Option:* ${variant}\n*Quantity:* ${qty}\n\nPlease share availability & payment details!`;
+
+            fireConfettiAt(btn);
+            window.open(`https://wa.me/${waNum}?text=${encodeURIComponent(msg)}`, "_blank");
+        }
+
+        function shareProduct(btn) {
+            const card = btn.closest(".life-card");
+            const name = card.querySelector(".prod-name").getAttribute("data-name");
+            const text = `Look at this handcrafted *${name}* from लखनवी weaves ✨ — authentic Lucknowi Chikankari!\nInstagram: https://www.instagram.com/${siteConfig.instagram || "lucknowiweaves"}/`;
+            window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, "_blank");
+        }
+
+        // ================= SURPRISE ME & STYLE FINDER =================
+        function surpriseMe() {
+            const btn = document.querySelector(".surprise-btn");
+            if (btn) { btn.classList.add("spinning"); setTimeout(() => btn.classList.remove("spinning"), 500); }
+            document.getElementById("searchInput").value = "";
+            document.getElementById("priceFilter").value = "all";
+            const allTab = document.querySelector('#filterTabs .filter-btn[data-filter="all"]');
+            if (allTab) allTab.click(); else applyFilters();
+
+            const list = getVisibleProducts();
+            if (!list.length) return;
+            const pick = list[Math.floor(Math.random() * list.length)];
+            showToast("Aadaab! We picked a special weave for you ✨", "fa-wand-magic-sparkles");
+            setTimeout(() => {
+                const card = document.querySelector(`.life-card[data-id="${pick.id}"]`);
+                if (card) {
+                    card.scrollIntoView({ behavior: "smooth", block: "center" });
+                    card.classList.add("surprise-highlight");
+                    setTimeout(() => card.classList.remove("surprise-highlight"), 1600);
+                }
+            }, 250);
+        }
+
+        let pfTargetCategory = "";
+        function pfSelectOccasion(cat, desc) {
+            pfTargetCategory = cat;
+            document.getElementById("pfStep1").classList.remove("active");
+            document.getElementById("pfResultText").innerHTML =
+                `For ${escapeHtml(desc.toLowerCase())}, we recommend our <strong>${escapeHtml(cat)}</strong> collection.`;
+            document.getElementById("pfResult").classList.add("active");
+        }
+        function pfGoToCollection() {
+            document.getElementById("searchInput").value = "";
+            document.getElementById("priceFilter").value = "all";
+            document.getElementById("catalog").scrollIntoView({ behavior: "smooth" });
+            setTimeout(() => {
+                const targetBtn = Array.from(document.querySelectorAll("#filterTabs .filter-btn"))
+                    .find(b => b.getAttribute("data-filter") === pfTargetCategory);
+                if (targetBtn) targetBtn.click();
+                else applyFilters();
+            }, 450);
+        }
+        function pfRestart() {
+            document.getElementById("pfResult").classList.remove("active");
+            document.getElementById("pfStep1").classList.add("active");
+        }
+
+        // ================= WISHLIST =================
+        function updateWishlistBadge() {
+            const el = document.getElementById("wishlistCount");
+            el.textContent = wishlist.length;
+            el.style.display = wishlist.length > 0 ? "flex" : "none";
+        }
+        function toggleWishlist(id, btn) {
+            const idx = wishlist.indexOf(id);
+            const added = idx === -1;
+            if (added) {
+                wishlist.push(id);
+                showToast("Saved to your Wishlist 🤍", "fa-heart");
+                if (btn) fireHeartBurst(btn);
+            } else {
+                wishlist.splice(idx, 1);
+                showToast("Removed from Wishlist", "fa-heart-crack");
+            }
+            saveLocal(STORAGE_KEYS.wishlist, wishlist);
+            updateWishlistBadge();
+            document.querySelectorAll(`.wishlist-btn[onclick*="'${id}'"]`).forEach(b => b.classList.toggle("active", added));
+            if (document.getElementById("wishlistOverlay").classList.contains("active")) renderWishlistPanel();
+        }
+        function openWishlistPanel() {
+            renderWishlistPanel();
+            document.getElementById("wishlistOverlay").classList.add("active");
+        }
+        function closeWishlistPanel() {
+            document.getElementById("wishlistOverlay").classList.remove("active");
+        }
+        function renderWishlistPanel() {
+            const container = document.getElementById("wishlistItemsContainer");
+            const footer = document.getElementById("wishlistPanelFooter");
+            const items = currentProducts.filter(p => wishlist.includes(p.id));
+            if (!items.length) {
+                container.innerHTML = `<div style="text-align:center; padding:60px 20px; color:var(--text-muted);">
+                    <i class="fas fa-heart-crack" style="font-size:2.2rem; color:var(--primary-soft); margin-bottom:12px; display:block;"></i>
+                    Your wishlist is empty. Tap the heart on any Chikankari piece to save it here.
+                </div>`;
+                footer.style.display = "none";
+                return;
+            }
+            footer.style.display = "flex";
+            container.innerHTML = items.map(p => `
+                <div class="wishlist-item">
+                    <img src="${escapeHtml((p.images && p.images[0]) || "")}" alt="${escapeHtml(p.title)}">
+                    <div class="wishlist-item-info">
+                        <h4>${escapeHtml(p.title)}</h4>
+                        <span>₹${Number(p.price || 0).toLocaleString("en-IN")}</span>
+                    </div>
+                    <button type="button" onclick="toggleWishlist('${p.id}')" style="background:none; border:none; color:var(--text-muted); cursor:pointer; padding:6px;"><i class="fas fa-trash"></i></button>
+                </div>
+            `).join("");
+        }
+        function enquireWishlistWA() {
+            const items = currentProducts.filter(p => wishlist.includes(p.id));
+            if (!items.length) return;
+            const waNum = (siteConfig.whatsapp || "919800000000").replace(/[^\d]/g, "");
+            let msg = "Aadaab लखनवी weaves ✨,\n\nI'm interested in these pieces from my wishlist:\n\n";
+            items.forEach((p, i) => { msg += `${i + 1}. ${p.title} — ₹${Number(p.price || 0).toLocaleString("en-IN")}\n`; });
+            msg += "\nCould you share available sizes?";
+            window.open(`https://wa.me/${waNum}?text=${encodeURIComponent(msg)}`, "_blank");
+        }
+        function openWishlistCallbackForm() {
+            closeWishlistPanel();
+            document.getElementById("wlFormView").style.display = "block";
+            document.getElementById("wlSuccessView").style.display = "none";
+            document.getElementById("wlError").style.display = "none";
+            document.getElementById("wishlistModal").classList.add("active");
+        }
+        async function submitWishlistCallback(e) {
+            e.preventDefault();
+            const name = document.getElementById("wlName").value.trim();
+            const number = document.getElementById("wlNumber").value.trim();
+            if (!name || !number) return false;
+            const items = currentProducts.filter(p => wishlist.includes(p.id)).map(p => p.title).join(", ");
+            if (GOOGLE_SHEET_WEBAPP_URL) {
+                try {
+                    await fetch(GOOGLE_SHEET_WEBAPP_URL, {
+                        method: "POST",
+                        headers: { "Content-Type": "text/plain;charset=utf-8" },
+                        body: JSON.stringify({ form_type: "Wishlist Callback", name, number, items })
+                    });
+                } catch (err) {}
+            }
+            document.getElementById("wlFormView").style.display = "none";
+            document.getElementById("wlSuccessMsg").textContent = `Shukriya ${name}! We'll reach out on ${number} soon regarding your wishlisted weaves.`;
+            document.getElementById("wlSuccessView").style.display = "block";
+            return false;
+        }
+
+        // ================= CARE GUIDE MODAL =================
+        function openCareModal(card) {
+            const key = normalizeKey(card.getAttribute("data-category"));
+            const data = careGuides[key] || careGuides["default"] || DEFAULT_CARE_GUIDES.default;
+            document.getElementById("careModalTitle").textContent = data.title;
+            document.getElementById("careModalBody").innerHTML = `
+                <h4><i class="fas fa-sparkles"></i> Care Instructions</h4>
+                <ul>${data.care.map(item => `<li><i class="fas fa-check-circle"></i><span>${escapeHtml(item)}</span></li>`).join("")}</ul>
+                <h4><i class="fas fa-ruler"></i> Sizing &amp; Drape</h4>
+                <ul>${data.size.map(item => `<li><i class="fas fa-check-circle"></i><span>${escapeHtml(item)}</span></li>`).join("")}</ul>
+            `;
+            document.getElementById("careModal").classList.add("active");
+        }
+
+        // ================= CONCIERGE FAQ CHAT =================
+        const HELPER_FAQ = {
+            start: {
+                bot: "Aadaab! ✨ Welcome to लखनवी weaves. How can we help you today?",
+                options: [
+                    { label: "🪡 Is the Chikankari handmade?", next: "craft" },
+                    { label: "📏 How do I pick my size?", next: "size" },
+                    { label: "🚚 Shipping & delivery time?", next: "shipping" },
+                    { label: "💬 Chat directly on WhatsApp", next: "wa" }
+                ]
+            },
+            craft: {
+                bot: "Yes! Every piece is authentically hand-embroidered by skilled karigars in Lucknow — never machine-printed.",
+                options: [{ label: "⬅️ Back to menu", next: "start" }]
+            },
+            size: {
+                bot: "We carry S (36) to XXL (44) across most kurtis, and 6.5m length for sarees. Tap the (i) icon on any card for fabric-specific guidance.",
+                options: [{ label: "⬅️ Back to menu", next: "start" }]
+            },
+            shipping: {
+                bot: "We ship pan-India from Lucknow! Orders typically dispatch within 2–3 working days.",
+                options: [{ label: "⬅️ Back to menu", next: "start" }]
+            },
+            wa: {
+                bot: "Tap below and we'll assist you personally on WhatsApp!",
+                options: [
+                    { label: "Open WhatsApp", action: "wa" },
+                    { label: "⬅️ Back to menu", next: "start" }
+                ]
+            }
+        };
+        function openHelperChat() {
+            document.getElementById("helperChatBody").innerHTML = "";
+            renderHelperStep("start");
+            document.getElementById("helperChatOverlay").classList.add("active");
+        }
+        function closeHelperChat() {
+            document.getElementById("helperChatOverlay").classList.remove("active");
+        }
+        function renderHelperStep(key) {
+            const step = HELPER_FAQ[key];
+            if (!step) return;
+            const body = document.getElementById("helperChatBody");
+            const botMsg = document.createElement("div");
+            botMsg.className = "chat-msg chat-bot";
+            botMsg.textContent = step.bot;
+            body.appendChild(botMsg);
+
+            const wrap = document.createElement("div");
+            wrap.className = "chat-options";
+            step.options.forEach(opt => {
+                const b = document.createElement("button");
+                b.type = "button";
+                b.className = "chat-option";
+                b.textContent = opt.label;
+                b.onclick = () => {
+                    wrap.remove();
+                    const u = document.createElement("div");
+                    u.className = "chat-msg chat-user";
+                    u.textContent = opt.label;
+                    body.appendChild(u);
+                    if (opt.action === "wa") {
+                        const waNum = (siteConfig.whatsapp || "919800000000").replace(/[^\d]/g, "");
+                        window.open(`https://wa.me/${waNum}`, "_blank");
+                        return;
+                    }
+                    setTimeout(() => renderHelperStep(opt.next), 240);
+                };
+                wrap.appendChild(b);
+            });
+            body.appendChild(wrap);
+            body.scrollTop = body.scrollHeight;
+        }
+
+        // ================= ADMIN AUTH & LIVE EDITING =================
+        function closeModal(id) {
+            document.getElementById(id).classList.remove("active");
+        }
+
+        async function sha256Hex(str) {
+            const buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(str));
+            return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, "0")).join("");
+        }
+
+        function updateAdminUI() {
+            document.getElementById("adminBar").classList.toggle("active", isAdmin);
+            document.getElementById("adminFab").classList.toggle("is-admin", isAdmin);
+            document.getElementById("adminFabIcon").className = isAdmin ? "fas fa-crown" : "fas fa-lock";
+            applySiteConfig();
+            renderFilterTabs();
+            renderProducts();
+        }
+
+        function handleAdminFabClick() {
+            if (isAdmin) { openPageEditor(); return; }
+            document.getElementById("adminLoginError").style.display = "none";
+            document.getElementById("adminPasswordInput").value = "";
+            document.getElementById("adminLoginModal").classList.add("active");
+        }
+
+        async function adminLogin(e) {
+            e.preventDefault();
+            const pass = document.getElementById("adminPasswordInput").value;
+            const hash = await sha256Hex(pass);
+            if (hash === ADMIN_PASSWORD_HASH || pass === "lucknowi") {
+                isAdmin = true;
+                localStorage.setItem(STORAGE_KEYS.admin, "1");
+                closeModal("adminLoginModal");
+                updateAdminUI();
+                showToast("Welcome to Admin Studio ✨", "fa-crown");
+            } else {
+                document.getElementById("adminLoginError").style.display = "block";
+            }
+            return false;
+        }
+
+        function adminLogout() {
+            isAdmin = false;
+            localStorage.removeItem(STORAGE_KEYS.admin);
+            updateAdminUI();
+            showToast("Logged out of Admin Studio", "fa-lock");
+        }
+
+        // ---- Edit Main Page Content ----
+        function openPageEditor() {
+            document.getElementById("peHeaderSub").value = siteConfig.headerSubtext;
+            document.getElementById("peHeroWelcome").value = siteConfig.heroWelcome;
+            document.getElementById("peHeroTitleMain").value = siteConfig.heroTitleMain;
+            document.getElementById("peHeroTitleAccent").value = siteConfig.heroTitleAccent;
+            document.getElementById("peHeroSubtitle").value = siteConfig.heroSubtitle;
+            document.getElementById("peHeroImageUrl").value = siteConfig.heroImage;
+            document.getElementById("peMarquee").value = (siteConfig.marqueeItems || []).join(", ");
+            document.getElementById("pePromoText").value = siteConfig.promoText;
+            document.getElementById("peWhatsapp").value = siteConfig.whatsapp;
+            document.getElementById("peInstagram").value = siteConfig.instagram;
+            document.getElementById("peStoryHeading").value = siteConfig.storyHeading;
+            document.getElementById("peStoryBody").value = siteConfig.storyBody;
+            document.getElementById("pageEditorModal").classList.add("active");
+        }
+
+        async function compressImageToDataUrl(file, maxDim = 1400, quality = 0.8) {
+            return new Promise((resolve, reject) => {
+                const img = new Image();
+                const url = URL.createObjectURL(file);
+                img.onload = () => {
+                    URL.revokeObjectURL(url);
+                    let { width, height } = img;
+                    if (width > maxDim || height > maxDim) {
+                        if (width > height) { height = Math.round(height * maxDim / width); width = maxDim; }
+                        else { width = Math.round(width * maxDim / height); height = maxDim; }
+                    }
+                    const canvas = document.createElement("canvas");
+                    canvas.width = width; canvas.height = height;
+                    const ctx = canvas.getContext("2d");
+                    ctx.fillStyle = "#FFFFFF";
+                    ctx.fillRect(0, 0, width, height);
+                    ctx.drawImage(img, 0, 0, width, height);
+                    resolve(canvas.toDataURL("image/jpeg", quality));
+                };
+                img.onerror = () => reject(new Error("Could not read image"));
+                img.src = url;
+            });
+        }
+
+        async function handleHeroFileSelect(e) {
+            const file = e.target.files[0];
+            if (!file) return;
+            try {
+                const dataUrl = await compressImageToDataUrl(file, 1600, 0.82);
+                document.getElementById("peHeroImageUrl").value = dataUrl;
+                showToast("Hero image ready — click Save Page Changes", "fa-image");
+            } catch (err) {
+                showToast("Could not process image", "fa-triangle-exclamation");
+            }
+        }
+
+        async function savePageSettings(e) {
+            e.preventDefault();
+            siteConfig = {
+                ...siteConfig,
+                headerSubtext: document.getElementById("peHeaderSub").value.trim(),
+                heroWelcome: document.getElementById("peHeroWelcome").value.trim(),
+                heroTitleMain: document.getElementById("peHeroTitleMain").value.trim(),
+                heroTitleAccent: document.getElementById("peHeroTitleAccent").value.trim(),
+                heroSubtitle: document.getElementById("peHeroSubtitle").value.trim(),
+                heroImage: document.getElementById("peHeroImageUrl").value.trim(),
+                marqueeItems: document.getElementById("peMarquee").value.split(",").map(s => s.trim()).filter(Boolean),
+                promoText: document.getElementById("pePromoText").value.trim(),
+                whatsapp: document.getElementById("peWhatsapp").value.trim(),
+                instagram: document.getElementById("peInstagram").value.trim().replace(/^@/, ""),
+                storyHeading: document.getElementById("peStoryHeading").value.trim(),
+                storyBody: document.getElementById("peStoryBody").value.trim()
+            };
+            saveLocal(STORAGE_KEYS.site, siteConfig);
+            applySiteConfig();
+            closeModal("pageEditorModal");
+            try {
+                const synced = await syncJsonToGithub("data/site-config.json", siteConfig, "Update main page content");
+                showToast(synced ? "Page updated & synced to GitHub!" : "Main page updated!", "fa-check-circle");
+            } catch (err) {
+                showToast("Saved locally (GitHub sync failed)", "fa-triangle-exclamation");
+            }
+            return false;
+        }
+
+        async function toggleUnderConstruction() {
+            const goingOn = !siteConfig.underConstruction;
+            const ok = await showConfirm(
+                goingOn ? "Enable Maintenance Mode?" : "Go Live Again?",
+                goingOn
+                    ? "Visitors will see the 'Curating Fresh Chikankari' screen. You will still see the full editable site while logged in."
+                    : "The storefront will be visible to all visitors again."
+            );
+            if (!ok) return;
+            siteConfig.underConstruction = goingOn;
+            saveLocal(STORAGE_KEYS.site, siteConfig);
+            applySiteConfig();
+            syncJsonToGithub("data/site-config.json", siteConfig, "Toggle maintenance mode").catch(() => {});
+            showToast(goingOn ? "Maintenance Mode ON" : "Storefront is Live!", "fa-check-circle");
+        }
+
+        // ---- Product CRUD ----
+        const PRESET_CATEGORIES = ["Daily Classics", "Festive Statements", "Chikankari Sarees", "Chanderi Edit", "Co-ord Sets", "Dupattas"];
+        const CUSTOM_CAT_VAL = "__custom__";
+        let pfEditingId = null;
+        let pfImages = [];
+
+        function populateCategoryOptions(selected) {
+            const cats = [...new Set([...PRESET_CATEGORIES, ...currentProducts.map(p => p.category).filter(Boolean)])];
+            const sel = document.getElementById("pfCategorySelect");
+            sel.innerHTML = cats.map(c => `<option value="${escapeHtml(c)}">${escapeHtml(c)}</option>`).join("")
+                + `<option value="${CUSTOM_CAT_VAL}">+ New Collection...</option>`;
+            const custom = document.getElementById("pfCategoryCustom");
+            if (selected && cats.includes(selected)) {
+                sel.value = selected; custom.style.display = "none"; custom.value = "";
+            } else if (selected) {
+                sel.value = CUSTOM_CAT_VAL; custom.style.display = "block"; custom.value = selected;
+            } else {
+                sel.value = cats[0]; custom.style.display = "none"; custom.value = "";
+            }
+        }
+        document.getElementById("pfCategorySelect").addEventListener("change", e => {
+            const custom = document.getElementById("pfCategoryCustom");
+            custom.style.display = e.target.value === CUSTOM_CAT_VAL ? "block" : "none";
+            if (e.target.value === CUSTOM_CAT_VAL) custom.focus();
+        });
+
+        function renderPfImages() {
+            const wrap = document.getElementById("pfImageList");
+            wrap.innerHTML = pfImages.length
+                ? pfImages.map((src, i) => `
+                    <div class="admin-img-thumb">
+                        <img src="${escapeHtml(src)}">
+                        <button type="button" onclick="removePfImg(${i})">×</button>
+                    </div>`).join("")
+                : `<small style="color:var(--text-muted);">No photos added yet.</small>`;
+        }
+        function removePfImg(i) { pfImages.splice(i, 1); renderPfImages(); }
+
+        document.getElementById("pfImageUpload").addEventListener("change", async (e) => {
+            for (const file of Array.from(e.target.files)) {
+                try {
+                    pfImages.push(await compressImageToDataUrl(file, 1100, 0.78));
+                } catch (err) {}
+            }
+            e.target.value = "";
+            renderPfImages();
+        });
+
+        document.getElementById("pfImageUrlAdd").addEventListener("keydown", (e) => {
+            if (e.key === "Enter") {
+                e.preventDefault();
+                const val = e.target.value.trim();
+                if (val) { pfImages.push(val); e.target.value = ""; renderPfImages(); }
+            }
+        });
+
+        function openProductForm(id, prefillFrom) {
+            pfEditingId = id || null;
+            const p = id ? currentProducts.find(x => x.id === id) : (prefillFrom || null);
+            const isDup = !id && !!prefillFrom;
+            document.getElementById("productFormTitle").textContent = id ? "Edit Product" : (isDup ? "Duplicate Product" : "Add New Product");
+            document.getElementById("pfError").style.display = "none";
+            document.getElementById("pfTitle").value = p ? p.title + (isDup ? " (Copy)" : "") : "";
+            document.getElementById("pfDesc").value = p ? (p.description || "") : "";
+            document.getElementById("pfPrice").value = p ? (p.price || "") : "";
+            document.getElementById("pfOldPrice").value = p && p.oldPrice ? p.oldPrice : "";
+            document.getElementById("pfBadge").value = p ? (p.badge || "") : "";
+            document.getElementById("pfQty").value = p && p.qty != null ? p.qty : 8;
+            document.getElementById("pfVariants").value = p && p.variants ? p.variants.join(", ") : "";
+            document.querySelectorAll('input[name="pfTag"]').forEach(cb => {
+                cb.checked = !!(p && p.tags && p.tags.includes(cb.value));
+            });
+            pfImages = p ? [...(p.images || [])] : [];
+            renderPfImages();
+            populateCategoryOptions(p ? p.category : null);
+            document.getElementById("productFormModal").classList.add("active");
+        }
+
+        function duplicateProduct(id) {
+            const p = currentProducts.find(x => x.id === id);
+            if (p) openProductForm(null, p);
+        }
+
+        async function persistProducts(msg) {
+            saveLocal(STORAGE_KEYS.products, currentProducts);
+            renderFilterTabs();
+            renderProducts();
+            try {
+                const synced = await syncJsonToGithub("data/products.json", currentProducts, msg);
+                showToast(synced ? `${msg} & synced to GitHub!` : msg, "fa-check-circle");
+            } catch (e) {
+                showToast(`${msg} (saved locally)`, "fa-check-circle");
+            }
+        }
+
+        async function saveProduct(e) {
+            e.preventDefault();
+            const title = document.getElementById("pfTitle").value.trim();
+            const catSel = document.getElementById("pfCategorySelect").value;
+            const category = catSel === CUSTOM_CAT_VAL ? document.getElementById("pfCategoryCustom").value.trim() : catSel;
+            const price = parseInt(document.getElementById("pfPrice").value, 10);
+            const urlField = document.getElementById("pfImageUrlAdd").value.trim();
+            if (urlField) { pfImages.push(urlField); document.getElementById("pfImageUrlAdd").value = ""; }
+
+            const errEl = document.getElementById("pfError");
+            if (!title || !category || isNaN(price)) {
+                errEl.textContent = "Please fill in Title, Collection and Price.";
+                errEl.style.display = "block";
+                return false;
+            }
+            const oldPriceVal = document.getElementById("pfOldPrice").value;
+            const variantsRaw = document.getElementById("pfVariants").value.trim();
+            const fields = {
+                title, category, price,
+                oldPrice: oldPriceVal ? parseInt(oldPriceVal, 10) : null,
+                description: document.getElementById("pfDesc").value.trim(),
+                badge: document.getElementById("pfBadge").value.trim(),
+                qty: parseInt(document.getElementById("pfQty").value, 10) || 0,
+                variants: variantsRaw ? variantsRaw.split(",").map(v => v.trim()).filter(Boolean) : ["Standard"],
+                tags: Array.from(document.querySelectorAll('input[name="pfTag"]:checked')).map(cb => cb.value),
+                images: pfImages.length ? [...pfImages] : ["https://images.unsplash.com/photo-1583391733956-6c78276477e2?auto=format&fit=crop&w=800&q=80"]
+            };
+
+            if (pfEditingId) {
+                currentProducts = currentProducts.map(p => p.id === pfEditingId ? { ...p, ...fields } : p);
+            } else {
+                currentProducts.push({ id: generateId(), visible: true, soldOut: false, createdAt: Date.now(), ...fields });
+            }
+            closeModal("productFormModal");
+            await persistProducts(pfEditingId ? "Product updated" : "Product added");
+            return false;
+        }
+
+        function closeAllCardMenus() {
+            document.querySelectorAll(".card-admin-menu.active").forEach(m => m.classList.remove("active"));
+        }
+        function toggleCardMenu(e, id) {
+            e.stopPropagation();
+            const menu = document.getElementById("menu-" + id);
+            const was = menu.classList.contains("active");
+            closeAllCardMenus();
+            if (!was) menu.classList.add("active");
+        }
+        document.addEventListener("click", closeAllCardMenus);
+
+        async function toggleProductVisibility(id) {
+            currentProducts = currentProducts.map(p => p.id === id ? { ...p, visible: p.visible === false ? true : false } : p);
+            await persistProducts("Visibility updated");
+        }
+        async function toggleSoldOut(id) {
+            currentProducts = currentProducts.map(p => p.id === id ? { ...p, soldOut: !p.soldOut } : p);
+            await persistProducts("Stock status updated");
+        }
+        async function deleteProduct(id) {
+            const ok = await showConfirm("Delete Product?", "This will permanently remove the piece from your catalog.");
+            if (!ok) return;
+            currentProducts = currentProducts.filter(p => p.id !== id);
+            await persistProducts("Product deleted");
+        }
+        async function deleteCollection(cat) {
+            const count = currentProducts.filter(p => p.category === cat).length;
+            const ok = await showConfirm(`Delete "${cat}"?`, `This removes all ${count} product(s) in this collection.`);
+            if (!ok) return;
+            currentProducts = currentProducts.filter(p => p.category !== cat);
+            await persistProducts("Collection deleted");
+        }
+
+        // ---- Care Guides Manager ----
+        let cgEditingKey = null;
+        function openCareGuideManager() {
+            renderCareGuideList();
+            document.getElementById("careGuideManagerModal").classList.add("active");
+        }
+        function renderCareGuideList() {
+            const wrap = document.getElementById("careGuideList");
+            wrap.innerHTML = Object.keys(careGuides).map(k => `
+                <div style="display:flex; align-items:center; justify-content:space-between; gap:12px; padding:12px 14px; background:#fff; border:1px solid #E8DCD0; border-radius:14px; margin-bottom:10px;">
+                    <div>
+                        <strong style="text-transform:capitalize; display:block;">${escapeHtml(k)}</strong>
+                        <span style="font-size:0.8rem; color:var(--text-muted);">${escapeHtml(careGuides[k].title || "")}</span>
+                    </div>
+                    <div style="display:flex; gap:8px;">
+                        <button type="button" onclick="openCareGuideForm('${escapeJsString(k)}')" style="width:34px; height:34px; border-radius:50%; border:none; background:var(--gold); color:var(--heritage); cursor:pointer;"><i class="fas fa-pen"></i></button>
+                        ${k !== "default" ? `<button type="button" onclick="deleteCareGuide('${escapeJsString(k)}')" style="width:34px; height:34px; border-radius:50%; border:none; background:#C0392B; color:#fff; cursor:pointer;"><i class="fas fa-trash"></i></button>` : ""}
+                    </div>
+                </div>
+            `).join("");
+        }
+        function openCareGuideForm(key) {
+            cgEditingKey = key || null;
+            const g = key ? careGuides[key] : null;
+            document.getElementById("cgFormTitle").textContent = key ? "Edit Care Guide" : "Add Care Guide";
+            document.getElementById("cgKey").value = key || "";
+            document.getElementById("cgTitle").value = g ? g.title : "";
+            document.getElementById("cgCare").value = g ? (g.care || []).join("\n") : "";
+            document.getElementById("cgSize").value = g ? (g.size || []).join("\n") : "";
+            closeModal("careGuideManagerModal");
+            document.getElementById("careGuideFormModal").classList.add("active");
+        }
+        async function saveCareGuide(e) {
+            e.preventDefault();
+            const key = normalizeKey(document.getElementById("cgKey").value);
+            if (!key) return false;
+            if (cgEditingKey && cgEditingKey !== key) delete careGuides[cgEditingKey];
+            careGuides[key] = {
+                title: document.getElementById("cgTitle").value.trim(),
+                care: document.getElementById("cgCare").value.split("\n").map(s => s.trim()).filter(Boolean),
+                size: document.getElementById("cgSize").value.split("\n").map(s => s.trim()).filter(Boolean)
+            };
+            saveLocal(STORAGE_KEYS.care, careGuides);
+            closeModal("careGuideFormModal");
+            syncJsonToGithub("data/careguides.json", careGuides, "Update care guides").catch(() => {});
+            showToast("Care guide saved!", "fa-check-circle");
+            return false;
+        }
+        async function deleteCareGuide(key) {
+            const ok = await showConfirm("Delete Care Guide?", `Remove the "${key}" care guide?`);
+            if (!ok) return;
+            delete careGuides[key];
+            saveLocal(STORAGE_KEYS.care, careGuides);
+            renderCareGuideList();
+            syncJsonToGithub("data/careguides.json", careGuides, "Delete care guide").catch(() => {});
+        }
+
+        // ---- GitHub Sync Settings ----
+        function openGithubSettings() {
+            const cfg = getGithubConfig();
+            document.getElementById("ghOwnerInput").value = cfg.owner || "";
+            document.getElementById("ghRepoInput").value = cfg.repo || "";
+            document.getElementById("ghBranchInput").value = cfg.branch || "main";
+            document.getElementById("ghTokenInput").value = cfg.token || "";
+            document.getElementById("githubSyncModal").classList.add("active");
+        }
+        function saveGithubSettings(e) {
+            e.preventDefault();
+            const cfg = {
+                owner: document.getElementById("ghOwnerInput").value.trim(),
+                repo: document.getElementById("ghRepoInput").value.trim(),
+                branch: document.getElementById("ghBranchInput").value.trim() || "main",
+                token: document.getElementById("ghTokenInput").value.trim()
+            };
+            saveLocal(STORAGE_KEYS.gh, cfg);
+            closeModal("githubSyncModal");
+            showToast("GitHub Sync settings saved to this browser", "fa-check-circle");
+            return false;
+        }
+
+        // ================= SCROLL REVEAL & INIT =================
+        window.addEventListener("scroll", () => {
+            document.getElementById("backToTop").classList.toggle("visible", window.scrollY > 500);
+        });
+
+        if ("IntersectionObserver" in window) {
+            const obs = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("in-view");
+                        obs.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.12 });
+            document.querySelectorAll(".reveal").forEach(el => obs.observe(el));
+        } else {
+            document.querySelectorAll(".reveal").forEach(el => el.classList.add("in-view"));
+        }
+
+        document.getElementById("footerYear").textContent = new Date().getFullYear();
+
+        (async function init() {
+            await fetchRemoteGithubData();
+            updateAdminUI();
+            updateWishlistBadge();
+        })();
+    </script>
+</body>
+</html>
